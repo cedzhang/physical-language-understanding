@@ -14,7 +14,8 @@ var geometric = function(p) {
 var dim = 7.5;
 var color = function() { return flip() ? 'red' : 'yellow' }
 var stackHeight = function() { return geometric(0.7) }
-var numStacks = function() {return sample(Poisson({mu: 3.5}))}
+// var numStacks = function() {return sample(Poisson({mu: 3.5}))}
+var numStacks = function() {return 2}
 
 var xposOnTable = function() { 
   return uniform(worldWidth/2 - 100, worldWidth/2 + 100) }
@@ -81,25 +82,22 @@ var addBlock = function(prevBlock, isFirst) {
 
 
 var stack = function(stackSoFar, h) {
-  if (h == 1) {
+  var newBlock = addBlock(stackSoFar[stackSoFar.length - 1], false);
+  var theStack = stackSoFar.concat(newBlock);
+  if (stackSoFar.length >= h) {
+    console.log()
     return stackSoFar;
   } else {
-    var newBlock = addBlock(stackSoFar[stackSoFar.length - 1], false);
-    var theStack = stackSoFar.concat(newBlock);
-    if (stackSoFar.length >= h - 1) {
-      return theStack;
-    } else {
-      return stack(theStack, h);
-    }
+    return stack(theStack, h);
   }
 }
 
 var makeStacks = function(stacksSoFar, n) {
   var height = stackHeight();
   var newStack = stack([addBlock(table, true)], height);
-  var stacks = stacksSoFar.concat(newStack);
+  var stacks = stacksSoFar.concat([newStack]);
   if (stacksSoFar.length >= n) {
-    return stacks;
+    return stacksSoFar;
   } else {
     return makeStacks(stacks, n);
   }
@@ -132,6 +130,8 @@ var tall = function(obj) {
   return obj.y < 250;
 }
 
+
+
 var run = function(world) {
   condition(filter(red, world).length >= 1);
 //   condition(any(tall, world));
@@ -140,9 +140,9 @@ var run = function(world) {
   return filter(red, finalWorld).length;
 }
 
-viz(Infer({method: 'rejection', samples: 1000},
-           function() { return run(makeBlockWorld()) }))
+// viz(Infer({method: 'rejection', samples: 1000},
+//            function() { return run(makeBlockWorld()) }))
 
 //Simulating and animating the world
 
-// physics.animate(1000, makeBlockWorld());
+physics.animate(1000, makeBlockWorld());
