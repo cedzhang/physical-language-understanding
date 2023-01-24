@@ -49,7 +49,7 @@ var force = function() {
   return {
     shape: 'square',
     static: false,
-    dims: [uniformDraw([15, 20])],
+    dims: [uniformDraw([15])],
     x: left? 100 : worldWidth - 100,
     y: 310,
     color: 'green',
@@ -91,12 +91,12 @@ var ypos = function(prevBlock, h) {
 
 var addBlock = function(prevBlock, isFirst) {
   var xposition = xposOnTable(xpositions);
-  if (isFirst) {
-    console.log("First");
-    var index = xpositions.indexOf(xposition);
-    xpositions.splice(index, 1);
-    console.log(xpositions);
-  }
+//   if (isFirst) {
+// //     console.log("First");
+//     var index = xpositions.indexOf(xposition);
+//     xpositions.splice(index, 1);
+// //     console.log(xpositions);
+//   }
   return {
     shape: 'rect',
     color: isFirst? color() : prevBlock.color,
@@ -138,7 +138,7 @@ var makeStacks = function(stacksSoFar, n) {
 
 var makeBlockWorld = function() {
   var n = numStacks();
-  console.log(n);
+//   console.log(n);
   var stacks = makeStacks([], n);
   var blockList = stacks.flat();
   var world = [ground, table, force()].concat(blockList);
@@ -158,16 +158,36 @@ var tall = function(obj) {
   return obj.y < 250;
 }
 
+var onGround = function(obj) {
+  return obj.y > 400;
+}
+
 var run = function(world) {
-  condition(filter(red, world).length >= 1);
+//   condition(filter(red, world).length >= 1);
 //   condition(any(tall, world));
   var finalWorld = physics.run(1000, world);
 //   return finalWorld[0].velocity[0] > 0;
-  return filter(red, finalWorld).length;
+//   return filter(red, finalWorld).length;
+  var objectsOnGround = filter(onGround, finalWorld);
+  var numYellow = filter(yellow, objectsOnGround).length
+  var numRed = filter(red, objectsOnGround).length
+  return numYellow > numRed? 2 : numYellow == numRed? 1 : 0
 }
 
-// viz(Infer({method: 'rejection', samples: 1000},
+// viz(Infer({method: 'forward', samples: 100},
 //            function() { return run(makeBlockWorld()) }))
 
+
+var result = function () {
+  var d = Infer({method: 'forward', samples: 50},
+            function() { return run(makeBlockWorld()) });
+  var moreRedProb = Math.exp(d.score(0));
+  var moreYellowProb = Math.exp(d.score(2));
+  var likert = Math.round((moreYellowProb / (moreRedProb + moreYellowProb)) * 6) + 1
+  return likert
+}
+
+viz(Infer({method: 'forward', samples: 20}, result));
+
 //Simulating and animating the world
-physics.animate(1000, makeBlockWorld());
+// physics.animate(1000, makeBlockWorld());
