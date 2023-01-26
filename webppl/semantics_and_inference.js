@@ -21,11 +21,11 @@ var isShort = function(stack) {
 }
 
 var isOnLeft = function(obj) {
-  return obj.x <= 265;
+  return obj.x <= 270;
 }
 
 var isOnRight = function(obj) {
-  return obj.x >= 335;
+  return obj.x >= 330;
 }
 
 var isOnMiddle = function(obj) {
@@ -33,15 +33,21 @@ var isOnMiddle = function(obj) {
 }
 
 var isOnEdge = function(obj) {
-  return (obj.x < 210 && obj.x > 190) || (obj.x < 410 && obj.x > 390);
+  return obj.x == 200 || obj.x == 400;
 }
 
 var isOnCenter = function(obj) {
-  return obj.x < 310 && obj.x > 290;
+  return obj.x == 300;
 }
 
 var isOnGround = function(obj) {
   return obj.y > 400;
+}
+
+var isNear = function(obj1) {
+  return function(obj2) {
+    return Math.abs(obj1.x - obj2.x) <= 40;
+  }
 }
 
 /////////////////////////////////////
@@ -54,12 +60,14 @@ var flattenWorld = function(world) {
 
 var visualizeConds = function(world) {
 //   condition(any(isTall, world.stacks));
-//   condition(filter(isTall, filter(isOnLeft, filter(isYellow, world.stacks))).length > 3);
 //   condition(filter(isTall, filter(isOnCenter, filter(isRed, world.stacks))).length > 0);
-  condition(all(isRed, filter(isOnRight, world.stacks)));
-  condition(filter(isOnRight, world.stacks).length > 0);
-  condition(filter(isYellow, (filter(isOnLeft, world.blocks))).length == filter(isOnLeft, world.blocks).length/2);
-  condition(filter(isOnLeft, world.blocks).length > 0);
+//   condition(all(isRed, filter(isOnRight, world.stacks)));
+//   condition(filter(isYellow, (filter(isOnLeft, world.blocks))).length == filter(isOnLeft, world.blocks).length/2);
+//   condition(filter(isOnLeft, world.blocks).length > 0);
+//   condition(filter(isOnLeft, world.blocks).length == 2 && all(isRed, filter(isOnLeft, world.blocks)));
+
+
+  
   var flatWorld = flattenWorld(world);
   var finalWorld = physics.run(1, flatWorld);
 //   return finalWorld[0].velocity[0] > 0;
@@ -74,14 +82,19 @@ var theWorld = w.toString().slice(14, -4);
 // physics.animate(1, JSON.parse(theWorld));
 
 var run = function(world) {
-  condition(filter(isOnLeft, world.blocks).length == 2 && all(isRed, filter(isOnLeft, world.blocks)));
-  condition(filter(isOnRight, world.stacks).length == 1 && all(isYellow, filter(isOnRight, world.blocks)));
+
+// condition(filter(isShort, filter(isOnLeft, (filter(isRed, world.stacks)))).length == 1);
+
+// condition(filter(isTall, filter(isOnRight, (filter(isYellow, world.stacks)))).length == 1);
+
+// condition(isOnLeft(world.force));
+  
   var flatWorld = flattenWorld(world);
   var finalWorld = physics.run(1000, flatWorld);
 //   return finalWorld[0].velocity[0] > 0;
 //   return filter(red, finalWorld).length;
   var objectsOnGround = filter(isOnGround, finalWorld);
-  condition(objectsOnGround.length > 1);
+  condition(objectsOnGround.length > 2);
   var numYellow = filter(isYellow, objectsOnGround).length;
   var numRed = filter(isRed, objectsOnGround).length;
   return numYellow > numRed? 2 : numYellow == numRed? 1 : 0
@@ -92,7 +105,7 @@ var run = function(world) {
 
 
 var result = function () {
-  var d = Infer({method: 'rejection', samples: 20},
+  var d = Infer({method: 'rejection', samples: 10},
             function() { return run(makeBlockWorld()) });
   var moreRedProb = Math.exp(d.score(0));
   var moreYellowProb = Math.exp(d.score(2));
@@ -100,8 +113,8 @@ var result = function () {
   return likert;
 }
 
-// viz(Infer({method: 'forward', samples: 20}, result));
+viz(Infer({method: 'forward', samples: 25}, result));
 
 // Simulating and animating the world
-physics.animate(1000, flattenWorld(makeBlockWorld()));
+// physics.animate(1000, flattenWorld(makeBlockWorld()));
 // physics.run(1000, makeBlockWorld());

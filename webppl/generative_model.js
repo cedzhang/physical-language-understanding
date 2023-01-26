@@ -15,10 +15,10 @@ var makeBlockWorld = function() {
   var tableSize = 100;
   var color = function() { return flip() ? 'red' : 'yellow' };
   var monoColor = flip();
-  var stackHeight = function() { return truncGeom(0.7, 1, 8) };
+  var stackHeight = function() { return truncGeom(0.5, 1, 8) };
 //   var numStacks = function() {return sample(Poisson({mu: 3}))+1};
 //   var numStacks = uniformDraw(_.range(1, 9));
-  var numStacks = truncGeom(0.7, 1, 8);
+  var numStacks = truncGeom(0.5, 1, 8);
   var xpositions = _.range(worldWidth/2 - tableSize, worldWidth/2 + tableSize + 20, 20);
 
   //// Object definitions ////
