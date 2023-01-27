@@ -1,0 +1,16 @@
+name: physlang
+channels:
+  - conda-forge
+  - anaconda
+dependencies:
+  - python=3.9
+  - black
+  - jupyterlab
+  - matplotlib
+  - nodejs
+  - numpy
+  - openai
+  - pandas
+  - pip
+  - seaborn
+  - tqdm
