@@ -9,10 +9,12 @@ var makeBlockWorld = function() {
       return flip(p) ? truncGeom(p, m+1, n) : m;
     }
   }
-  
+
 //   var dim = function() { return uniform(5, 10) }
   var dim = 10;
   var tableSize = 100;
+  var worldWidth = 600;
+  var worldHeight = 500;
   var color = function() { return flip() ? 'red' : 'yellow' };
   var monoColor = flip();
   var stackHeight = function() { return truncGeom(0.5, 1, 8) };
@@ -51,9 +53,9 @@ var makeBlockWorld = function() {
   }
 
 //// Make stacks ////
-  
-  var xposOnTable = function(options) { 
-    return uniformDraw(options); 
+
+  var xposOnTable = function(options) {
+    return uniformDraw(options);
   }
 
   var xpos = function(prevBlock) {
@@ -94,7 +96,7 @@ var makeBlockWorld = function() {
   }
 
   var makeStacks = function(stacksSoFar, n) {
-    var height = stackHeight();  
+    var height = stackHeight();
     var newStack = stack([addBlock(table, true)], height);
     var stacks = stacksSoFar.concat([newStack]);
 //     var index = xpositions.indexOf(stacks[stacks.length - 1][0].x);
@@ -105,19 +107,19 @@ var makeBlockWorld = function() {
       return makeStacks(stacks, n);
     }
   }
-  
+
   var getStackInfo = function(stack) {
     var color = monoColor? stack[0].color : 'mixed';
     var height = stack[0].y - stack[stack.length-1].y + 2 * dim;
     return {blocks: stack,
             color: color,
             x: stack[0].x,
-            height: height 
+            height: height
            }
   }
-  
+
   var realStack = function(stack) {
-    return stack.length >= 2; 
+    return stack.length >= 2;
   }
 
   //// Make world ////
@@ -132,9 +134,40 @@ var makeBlockWorld = function() {
                table: table,
                force: force()
               }
-//   var world = [ground, table, force()].concat(blockList);
+  var world = [ground, table, force()].concat(blockList);
 //   var world = [ground, table, force]
   return world;
 }
 
-editor.put("model", makeBlockWorld);
+// physics.animate(1000, makeBlockWorld());
+
+var run = function(world) {
+//   condition(filter(red, world).length >= 1);
+//   condition(any(tall, world));
+  var finalWorld = physics.run(1000, world);
+//   return finalWorld[0].velocity[0] > 0;
+//   return filter(red, finalWorld).length;
+  var objectsOnGround = filter(onGround, finalWorld);
+  var numYellow = filter(isYellow, objectsOnGround).length
+  var numRed = filter(isRed, objectsOnGround).length
+  return numYellow > numRed? 2 : numYellow == numRed? 1 : 0
+}
+
+var isRed = function(obj) {
+  return obj.color == 'red';
+}
+
+var isYellow = function(obj) {
+  return obj.color == 'yellow';
+}
+
+var isTall = function(obj) {
+  return obj.y < 160;
+}
+
+var onGround = function(obj) {
+  return obj.y > 400;
+}
+
+
+Infer({method: 'forward', samples: 100}, function() { return run(makeBlockWorld()) })
