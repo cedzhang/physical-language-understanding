@@ -1,5 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
+#
+# Author: Gabriel Grand (grandg@mit.edu)
+#
+# Usage (see optional CLI args):
+# python run_simulator.py <experiment_id> --samples 10 --timeout 240
 
 import argparse
 import os
@@ -9,6 +14,7 @@ import subprocess
 import pickle
 import json
 import time
+from tqdm import tqdm
 
 from model_template import MODEL_TEMPLATE
 
@@ -53,8 +59,10 @@ def run_single_task(
     # Optionally, load cached prior result
     if use_cached and os.path.exists(results_file):
         with open(results_file, "rb") as f:
+            completed_process = pickle.load(f)
+        if completed_process is not None:
             print(f"Loaded cached {results_file}")
-            return pickle.load(f)
+            return completed_process
 
     # Run with shell=True
     cmd = f"webppl {model_file} --require node_modules/physics --random-seed {seed}"
@@ -75,7 +83,7 @@ def run_single_task(
 
     if completed_process is not None:
         setattr(completed_process, "runtime", time.time() - time_start)
-        print(f"Simulation completed in {completed_process.runtime:.3f}s")
+        print(f"Task {task_id}: Simulation completed in {completed_process.runtime:.3f}s")
         if completed_process.returncode == 0:
             print(completed_process.stdout)
         else:
@@ -126,7 +134,7 @@ def run_experiment(
         job_list = [
             pool.apply_async(run_single_task, args, kwargs) for args in args_list
         ]
-        completed_process_list = [job.get() for job in job_list]
+        completed_process_list = [job.get() for job in tqdm(job_list)]
 
         # Terminate multiprocessing
         pool.close()
@@ -164,7 +172,7 @@ def run_experiment(
                     }
                 )
             else:
-                print(f"WARNING: No results for task {task_id}")
+                print(f"WARNING: No results for task {task_id} due to runtime error.")
                 results_list.append(
                     {
                         "task_id": task_id,
@@ -173,7 +181,7 @@ def run_experiment(
                     }
                 )
         else:
-            print(f"WARNING: No results for task {task_id}")
+            print(f"WARNING: No results for task {task_id} due to timeout.")
             results_list.append(
                 {
                     "task_id": task_id,
