@@ -16,8 +16,8 @@ var makeBlockWorld = function () {{
     var worldWidth = 600;
     var worldHeight = 500;
     var color = function () {{ return flip() ? 'red' : 'yellow' }};
-    var monoColor = flip();
-    var stackHeight = function () {{ return truncGeom(0.5, 1, 8) }};
+    var monoColor = flip(1.0);
+    var stackHeight = function () {{ return truncGeom(0.7, 1, 8) }};
     var numStacks = truncGeom(0.5, 1, 8);
     var xpositions = _.range(worldWidth / 2 - tableSize, worldWidth / 2 + tableSize + 20, 20);
 
@@ -195,24 +195,18 @@ var makeBlockWorld = function () {{
     return [world.ground, world.table, world.force].concat(world.blocks);
   }}
 
-  var visualizeConds = function (world) {{
-    var flatWorld = flattenWorld(world);
-    var finalWorld = physics.run(1, flatWorld);
-    return finalWorld;
-  }}
-
-  var w = Infer({{ method: 'rejection', samples: 1 }},
-    function () {{ return visualizeConds(makeBlockWorld()) }});
-  var theWorld = w.toString().slice(14, -4);
-
   var run = function (world) {{
+    // CONDITIONS
+    {CONDITIONS}
+
     var flatWorld = flattenWorld(world);
     var finalWorld = physics.run(1000, flatWorld);
 
     var objectsOnGround = filter(isOnGround, finalWorld);
 
-    // CONDITIONS
-    {CONDITIONS}
+    // Condition: There is at least one block on the ground
+    // NOTE: `ground` and `force` are always on the ground
+    condition(objectsOnGround.length > 2);
 
     var numYellow = filter(isYellow, objectsOnGround).length;
     var numRed = filter(isRed, objectsOnGround).length;
@@ -220,7 +214,7 @@ var makeBlockWorld = function () {{
   }}
 
   var result = function () {{
-    var d = Infer({{ method: 'rejection', samples: 10 }},
+    var d = Infer({{ method: 'rejection', samples: {N_SIMULATIONS}, incremental: true }},
       function () {{ return run(makeBlockWorld()) }});
     var moreRedProb = Math.exp(d.score(0));
     var moreYellowProb = Math.exp(d.score(2));
@@ -228,7 +222,7 @@ var makeBlockWorld = function () {{
     return likert;
   }}
 
-  var dist = Infer({{ method: 'forward', samples: {SAMPLES}}}, result);
+  var dist = Infer({{ method: 'forward', samples: {N_PARTICIPANTS}}}, result);
   var getData = function (key) {{
     return Math.exp(dist.score(key));
   }}

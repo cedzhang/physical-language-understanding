@@ -4,7 +4,7 @@
 # Author: Gabriel Grand (grandg@mit.edu)
 #
 # Usage (see optional CLI args):
-# python run_simulator.py <experiment_id> --samples 10 --timeout 240
+# python run_simulator.py <experiment_id> --n_participants 20 --n_simulations 10 --timeout 240
 
 import argparse
 import os
@@ -25,7 +25,7 @@ DIR_RESULTS = "results"
 DIR_WEBPPL = "webppl"
 
 
-def populate_template(df, task_id, samples: int = 10):
+def populate_template(df, task_id, n_simulations: int = 10, n_participants: int = 20):
     conditions = []
     for i in range(1, 4):
         l = df.loc[task_id, f"codex_language_phrase_{i}"]
@@ -34,12 +34,12 @@ def populate_template(df, task_id, samples: int = 10):
             conditions += ["// " + l, c + "\n"]
     conditions_str = "\n    ".join(conditions)
 
-    model_template = MODEL_TEMPLATE.format(SAMPLES=samples, CONDITIONS=conditions_str)
+    model_template = MODEL_TEMPLATE.format(N_SIMULATIONS=n_simulations, N_PARTICIPANTS=n_participants, CONDITIONS=conditions_str)
     return model_template
 
 
-def write_model_for_task(df, task_id, samples, model_dir):
-    model_template = populate_template(df, task_id, samples=samples)
+def write_model_for_task(df, task_id, n_simulations, n_participants, model_dir):
+    model_template = populate_template(df, task_id, n_simulations=n_simulations, n_participants=n_participants)
     model_file = os.path.join(model_dir, f"model_{task_id:03d}.wppl")
     with open(model_file, "w") as f:
         f.write(model_template)
@@ -99,7 +99,8 @@ def run_single_task(
 def run_experiment(
     experiment_id: str,
     use_cached: bool = False,
-    samples: int = 10,
+    n_simulations: int = 10,
+    n_participants: int = 20,
     timeout: int = 120,
     seed: int = 123,
     parallel: bool = True,
@@ -117,7 +118,7 @@ def run_experiment(
 
     # Write out model files
     for task_id, row in df.iterrows():
-        write_model_for_task(df, task_id, samples, model_dir)
+        write_model_for_task(df, task_id, n_simulations, n_participants, model_dir)
 
     # Run simulations
     if parallel:
@@ -202,19 +203,20 @@ def run_experiment(
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("experiment_id")
-    parser.add_argument("--use_cached", action="store_true", default=False)
-    parser.add_argument("--samples", type=int, default=10)
-    parser.add_argument("--timeout", type=int, default=120)
-    parser.add_argument("--seed", type=int, default=123)
+    parser.add_argument("--use_cached", action="store_true", default=False, help="Checks the results dir for prior results.pkl files and uses these when available.")
+    parser.add_argument("--n_simulations", type=int, default=10, help="Number of physics simulations to run for each participant.")
+    parser.add_argument("--n_participants", type=int, default=20, help="Number of (simulated) participants. Each participant runs `n_simulations` mental simulations and reports the average on a likert scale.")
+    parser.add_argument("--timeout", type=int, default=120, help="Per-task timeout (seconds) after which simulation will be terminated.")
+    parser.add_argument("--seed", type=int, default=123, help="Random seed to pass to WebPPL.")
     parser.add_argument(
-        "--parallel", action=argparse.BooleanOptionalAction, default=True
+        "--parallel", action=argparse.BooleanOptionalAction, default=True, help="Runs the simulations in parallel. Speedup is approx. by a factor of n_cpus."
     )
     args = parser.parse_args()
 
     run_experiment(
         experiment_id=args.experiment_id,
         use_cached=args.use_cached,
-        samples=args.samples,
+        n_simulations=args.n_simulations,
         timeout=args.timeout,
         seed=args.seed,
         parallel=args.parallel,
