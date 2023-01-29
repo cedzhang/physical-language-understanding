@@ -209,7 +209,11 @@ var run = function (world) {
   var finalWorld = physics.run(1000, flatWorld);
 
   var objectsOnGround = filter(isOnGround, finalWorld);
+
+    // Condition: There is at least one block on the ground
+    // NOTE: `ground` and `force` are always on the ground
   condition(objectsOnGround.length > 2);
+    // condition(filter(isRed, filter(isOnLeft, world.stacks)).length == 1);
 
   var numYellow = filter(isYellow, objectsOnGround).length;
   var numRed = filter(isRed, objectsOnGround).length;
@@ -225,11 +229,12 @@ var result = function () {
   return likert;
 }
 
-var dist = Infer({ method: 'forward', samples: 10 }, result);
+var dist = Infer({ method: 'forward', samples: argv.samples }, result);
 var getData = function (key) {
   return Math.exp(dist.score(key));
 }
 var output = {
+  "argv": argv,
   "probs": map(getData, dist.support()),
   "support": dist.support()
 }
