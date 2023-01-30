@@ -1,0 +1,642 @@
+task_id,language_full,number,location,quant_or_neg,vague_adj,language_phrase_1,language_phrase_2,language_phrase_3,language_phrase_4,code_full,code_phrase_1,code_phrase_2,code_phrase_3,code_phrase_4,complexity,example_answer,choice_index,finish_reason,text,codex_language_phrase_1,codex_code_phrase_1,codex_language_phrase_2,codex_code_phrase_2,codex_language_phrase_3,codex_code_phrase_3,codex_language_phrase_4,codex_code_phrase_4
+1,"There are four stacks of red blocks, and there is one stack of yellow blocks.",1,,,,There are four stacks of red blocks.,There is one stack of yellow blocks.,,,"condition(filter(isRed, world.stacks).length == 4);
+condition(filter(isYellow, world.stacks).length == 1);","condition(filter(isRed, world.stacks).length == 4);","condition(filter(isYellow, world.stacks).length == 1);",,,low,2,0,stop,"
+// There are four stacks of red blocks.
+condition(filter(isRed, world.stacks).length == 4);
+
+// There is one stack of yellow blocks.
+condition(filter(isYellow, world.stacks).length == 1);
+
+",There are four stacks of red blocks.,"condition(filter(isRed, world.stacks).length == 4);",There is one stack of yellow blocks.,"condition(filter(isYellow, world.stacks).length == 1);",,,,
+2,"There are two stacks of yellow blocks, and there is one stack of red blocks.",1,,,,There are two stacks of yellow blocks.,There is one stack of red blocks.,,,"condition(filter(isYellow, world.stacks).length == 2);
+condition(filter(isRed, world.stacks).length == 1);","condition(filter(isYellow, world.stacks).length == 2);","condition(filter(isRed, world.stacks).length == 1);",,,low,5,0,stop,"
+// There are two stacks of yellow blocks.
+condition(filter(isYellow, world.stacks).length == 2);
+
+// There is one stack of red blocks.
+condition(filter(isRed, world.stacks).length == 1);
+
+",There are two stacks of yellow blocks.,"condition(filter(isYellow, world.stacks).length == 2);",There is one stack of red blocks.,"condition(filter(isRed, world.stacks).length == 1);",,,,
+3,"There are two stacks of red blocks, and there are two stacks of yellow blocks.",1,,,,There are two stacks of red blocks.,There are two stacks of yellow blocks.,,,"condition(filter(isRed, world.stacks).length == 2);
+condition(filter(isYellow, world.stacks).length == 2);","condition(filter(isRed, world.stacks).length == 2);","condition(filter(isYellow, world.stacks).length == 2);",,,low,4,0,stop,"
+// There are two stacks of red blocks.
+condition(filter(isRed, world.stacks).length == 2);
+
+// There are two stacks of yellow blocks.
+condition(filter(isYellow, world.stacks).length == 2);
+
+",There are two stacks of red blocks.,"condition(filter(isRed, world.stacks).length == 2);",There are two stacks of yellow blocks.,"condition(filter(isYellow, world.stacks).length == 2);",,,,
+4,"There are yellow blocks on the left side of the table, and there are red blocks on the right edge of the table.",,1,,,There are yellow blocks on the left side of the table.,There are red blocks on the right edge of the table.,,,"condition(filter(isOnLeft, filter(isYellow, world.blocks)).length > 0);
+condition(filter(isOnEdge, filter(isOnRight, filter(isRed, world.blocks))).length > 0);","condition(filter(isOnLeft, filter(isYellow, world.blocks)).length > 0);","condition(filter(isOnEdge, filter(isOnRight, filter(isRed, world.blocks))).length > 0);",,,low,3,0,stop,"
+// There are yellow blocks on the left side of the table.
+condition(filter(isOnLeft, filter(isYellow, world.blocks)).length > 0);
+
+// There are red blocks on the right edge of the table.
+condition(filter(isOnRight, filter(isRed, world.blocks)).length > 0);
+
+",There are yellow blocks on the left side of the table.,"condition(filter(isOnLeft, filter(isYellow, world.blocks)).length > 0);",There are red blocks on the right edge of the table.,"condition(filter(isOnRight, filter(isRed, world.blocks)).length > 0);",,,,
+5,"There are red blocks on the left edge of the table, and there are yellow blocks on the right edge of the table.",,1,,,There are red blocks on the left edge of the table.,There are yellow blocks on the right edge of the table.,,,"condition(filter(isOnEdge, filter(isOnLeft, filter(isRed, world.blocks))).length > 0);
+condition(filter(isOnEdge, filter(isOnRight, filter(isYellow, world.blocks))).length > 0);","condition(filter(isOnEdge, filter(isOnLeft, filter(isRed, world.blocks))).length > 0);","condition(filter(isOnEdge, filter(isOnRight, filter(isYellow, world.blocks))).length > 0);",,,low,4,0,stop,"
+// There are red blocks on the left edge of the table.
+condition(filter(isOnLeft, filter(isRed, world.blocks)).length > 0);
+
+// There are yellow blocks on the right edge of the table.
+condition(filter(isOnRight, filter(isYellow, world.blocks)).length > 0);
+
+",There are red blocks on the left edge of the table.,"condition(filter(isOnLeft, filter(isRed, world.blocks)).length > 0);",There are yellow blocks on the right edge of the table.,"condition(filter(isOnRight, filter(isYellow, world.blocks)).length > 0);",,,,
+6,"There are yellow blocks on the edges of the table, and there are red blocks on the center of the table.",,1,,,There are yellow blocks on the edges of the table.,There are red blocks on the center of the table.,,,"condition(filter(isOnEdge, filter(isYellow, world.blocks)).length > 0);
+condition(filter(isOnCenter, filter(isRed, world.blocks)).length > 0);","condition(filter(isOnEdge, filter(isYellow, world.blocks)).length > 0);","condition(filter(isOnCenter, filter(isRed, world.blocks)).length > 0);",,,low,6,0,stop,"
+// There are yellow blocks on the edges of the table.
+condition(filter(isOnEdge, filter(isYellow, world.blocks)).length > 0);
+
+// There are red blocks on the center of the table.
+condition(filter(isOnCenter, filter(isRed, world.blocks)).length > 0);
+
+",There are yellow blocks on the edges of the table.,"condition(filter(isOnEdge, filter(isYellow, world.blocks)).length > 0);",There are red blocks on the center of the table.,"condition(filter(isOnCenter, filter(isRed, world.blocks)).length > 0);",,,,
+7,All of the blocks are red.,,,1,,All of the blocks are red.,,,,"condition(all(isRed, world.blocks));","condition(all(isRed, world.blocks));",,,,low,1,0,stop,"
+// All of the blocks are red.
+condition(all(isRed, world.blocks));
+
+",All of the blocks are red.,"condition(all(isRed, world.blocks));",,,,,,
+8,Most of the blocks are yellow.,,,1,,Most of the blocks are yellow.,,,,"condition(filter(isYellow, world.blocks).length > world.blocks.length/2);","condition(filter(isYellow, world.blocks).length > world.blocks.length/2);",,,,low,6,0,stop,"
+// Most of the blocks are yellow.
+condition(filter(isYellow, world.blocks).length > filter(isRed, world.blocks).length);
+
+",Most of the blocks are yellow.,"condition(filter(isYellow, world.blocks).length > filter(isRed, world.blocks).length);",,,,,,
+9,"There are many red blocks, and there are a few yellow blocks.",,,1,,There are many red blocks.,There are a few yellow blocks.,,,"condition(filter(isRed, world.blocks).length >= 6);
+condition(filter(isYellow, world.blocks).length > 1 && filter(isYellow, world.blocks).length <= 4);","condition(filter(isRed, world.blocks).length >= 6);","condition(filter(isYellow, world.blocks).length > 1 && filter(isYellow, world.blocks).length <= 4);",,,low,2,0,stop,"
+// There are many red blocks.
+condition(filter(isRed, world.blocks).length > 5);
+
+// There are a few yellow blocks.
+condition(filter(isYellow, world.blocks).length > 1 && filter(isYellow, world.blocks).length <= 5);
+
+",There are many red blocks.,"condition(filter(isRed, world.blocks).length > 5);",There are a few yellow blocks.,"condition(filter(isYellow, world.blocks).length > 1 && filter(isYellow, world.blocks).length <= 5);",,,,
+10,"There are several stacks of yellow blocks, and there are few stacks of red blocks.",,,1,,There are several stacks of yellow blocks.,There are few stacks of red blocks.,,,"condition(filter(isYellow, world.stacks).length > 2 && filter(isYellow, world.stacks).length <= 5);
+condition(filter(isRed, world.stacks).length <= 4);","condition(filter(isYellow, world.stacks).length > 2 && filter(isYellow, world.stacks).length <= 5);","condition(filter(isRed, world.stacks).length <= 4);",,,low,5,0,stop,"
+// There are several stacks of yellow blocks.
+condition(filter(isYellow, world.stacks).length > 1 && filter(isYellow, world.stacks).length <= 4);
+
+// There are few stacks of red blocks.
+condition(filter(isRed, world.stacks).length > 0 && filter(isRed, world.stacks).length <= 2);
+
+",There are several stacks of yellow blocks.,"condition(filter(isYellow, world.stacks).length > 1 && filter(isYellow, world.stacks).length <= 4);",There are few stacks of red blocks.,"condition(filter(isRed, world.stacks).length > 0 && filter(isRed, world.stacks).length <= 2);",,,,
+11,"Half of the blocks are yellow, and half of the blocks are red.",,,1,,Half of the blocks are yellow.,Half of the blocks are red.,,,"condition(filter(isYellow, world.blocks).length == world.blocks.length/2);
+condition(filter(isRed, world.blocks).length == world.blocks.length/2);","condition(filter(isYellow, world.blocks).length == world.blocks.length/2);","condition(filter(isRed, world.blocks).length == world.blocks.length/2);",,,low,4,0,stop,"
+// Half of the blocks are yellow.
+condition(filter(isYellow, world.blocks).length == filter(isRed, world.blocks).length);
+
+",Half of the blocks are yellow.,"condition(filter(isYellow, world.blocks).length == filter(isRed, world.blocks).length);",,,,,,
+12,None of the blocks are red.,,,2,,None of the blocks are red.,,,,"condition(filter(isRed, world.blocks).length == 0);","condition(filter(isRed, world.blocks).length == 0);",,,,low,7,0,stop,"
+// None of the blocks are red.
+condition(filter(isRed, world.blocks).length == 0);
+
+",None of the blocks are red.,"condition(filter(isRed, world.blocks).length == 0);",,,,,,
+13,No less than half of the blocks are yellow.,,,2,,No less than half of the blocks are yellow.,,,,"condition(filter(isYellow, world.blocks).length >= world.blocks.length/2);","condition(filter(isYellow, world.blocks).length >= world.blocks.length/2);",,,,low,5,0,stop,"
+// No less than half of the blocks are yellow.
+condition(filter(isYellow, world.blocks).length >= world.blocks.length / 2);
+
+",No less than half of the blocks are yellow.,"condition(filter(isYellow, world.blocks).length >= world.blocks.length / 2);",,,,,,
+14,"There are tall stacks of red blocks, and there are short stacks of yellow blocks.",,,,1,There are tall stacks of red blocks.,There are short stacks of yellow blocks.,,,"condition(filter(isTall, filter(isRed, world.stacks)).length > 0);
+condition(filter(isShort, filter(isYellow, world.stacks)).length > 0);","condition(filter(isTall, filter(isRed, world.stacks)).length > 0);","condition(filter(isShort, filter(isYellow, world.stacks)).length > 0);",,,low,3,0,stop,"
+// There are tall stacks of red blocks.
+condition(filter(isTall, filter(isRed, world.stacks)).length > 0);
+
+// There are short stacks of yellow blocks.
+condition(filter(isShort, filter(isYellow, world.stacks)).length > 0);
+
+",There are tall stacks of red blocks.,"condition(filter(isTall, filter(isRed, world.stacks)).length > 0);",There are short stacks of yellow blocks.,"condition(filter(isShort, filter(isYellow, world.stacks)).length > 0);",,,,
+15,"There are stacks of yellow blocks, and there are tall stacks of red blocks.",,,,1,There are stacks of yellow blocks.,There are tall stacks of red blocks.,,,"condition(filter(isYellow, world.stacks).length > 0);
+condition(filter(isTall, filter(isRed, world.stacks)).length > 0);","condition(filter(isYellow, world.stacks).length > 0);","condition(filter(isTall, filter(isRed, world.stacks)).length > 0);",,,low,3,0,stop,"
+// There are stacks of yellow blocks.
+condition(filter(isYellow, world.stacks).length > 0);
+
+// There are tall stacks of red blocks.
+condition(filter(isTall, filter(isRed, world.stacks)).length > 0);
+
+",There are stacks of yellow blocks.,"condition(filter(isYellow, world.stacks).length > 0);",There are tall stacks of red blocks.,"condition(filter(isTall, filter(isRed, world.stacks)).length > 0);",,,,
+16,"There are short stacks of red blocks, and there are short stacks of yellow blocks.",,,,1,There are short stacks of red blocks.,There are short stacks of yellow blocks.,,,"condition(filter(isShort, filter(isRed, world.stacks)).length > 0);
+condition(filter(isShort, filter(isYellow, world.stacks)).length > 0);","condition(filter(isShort, filter(isRed, world.stacks)).length > 0);","condition(filter(isShort, filter(isYellow, world.stacks)).length > 0);",,,low,4,0,stop,"
+// There are short stacks of red blocks.
+condition(filter(isShort, filter(isRed, world.stacks)).length > 0);
+
+// There are short stacks of yellow blocks.
+condition(filter(isShort, filter(isYellow, world.stacks)).length > 0);
+
+",There are short stacks of red blocks.,"condition(filter(isShort, filter(isRed, world.stacks)).length > 0);",There are short stacks of yellow blocks.,"condition(filter(isShort, filter(isYellow, world.stacks)).length > 0);",,,,
+17,"There are four yellow blocks on the left side of the table, and there are seven red blocks on the middle.",1,1,,,There are four yellow blocks on the left side of the table.,There are seven red blocks on the middle.,,,"condition(filter(isOnLeft, filter(isYellow, world.blocks)).length == 4);
+condition(filter(isOnMiddle, filter(isRed, world.blocks)).length == 7);","condition(filter(isOnLeft, filter(isYellow, world.blocks)).length == 4);","condition(filter(isOnMiddle, filter(isRed, world.blocks)).length == 7);",,,medium,4,0,stop,"
+// There are four yellow blocks on the left side of the table.
+condition(filter(isOnLeft, filter(isYellow, world.blocks)).length == 4);
+
+// There are seven red blocks on the middle.
+condition(filter(isOnMiddle, filter(isRed, world.blocks)).length == 7);
+
+",There are four yellow blocks on the left side of the table.,"condition(filter(isOnLeft, filter(isYellow, world.blocks)).length == 4);",There are seven red blocks on the middle.,"condition(filter(isOnMiddle, filter(isRed, world.blocks)).length == 7);",,,,
+18,"There is one stack of red blocks on the right side of the table, and there is one stack of yellow blocks on the center.",1,1,,,There is one stack of red blocks on the right side of the table.,There is one stack of yellow blocks on the center.,,,"condition(filter(isOnRight, filter(isRed, world.stacks)).length == 1);
+condition(filter(isOnCenter, filter(isYellow, world.stacks)).length == 1);","condition(filter(isOnRight, filter(isRed, world.stacks)).length == 1);","condition(filter(isOnCenter, filter(isYellow, world.stacks)).length == 1);",,,medium,2,0,stop,"
+// There is one stack of red blocks on the right side of the table.
+condition(filter(isOnRight, filter(isRed, world.stacks)).length == 1);
+
+// There is one stack of yellow blocks on the center.
+condition(filter(isOnCenter, filter(isYellow, world.stacks)).length == 1);
+
+",There is one stack of red blocks on the right side of the table.,"condition(filter(isOnRight, filter(isRed, world.stacks)).length == 1);",There is one stack of yellow blocks on the center.,"condition(filter(isOnCenter, filter(isYellow, world.stacks)).length == 1);",,,,
+19,"There is one stack of yellow blocks on the left side of the table, and there are two stacks of red blocks on the middle.",1,1,,,There is one stack of yellow blocks on the left side of the table.,There are two stacks of red blocks on the middle.,,,"condition(filter(isOnLeft, filter(isYellow, world.stacks)).length == 1);
+condition(filter(isOnMiddle, filter(isRed, world.stacks)).length == 2);","condition(filter(isOnLeft, filter(isYellow, world.stacks)).length == 1);","condition(filter(isOnMiddle, filter(isRed, world.stacks)).length == 2);",,,medium,5,0,stop,"
+// There is one stack of yellow blocks on the left side of the table.
+condition(filter(isOnLeft, filter(isYellow, world.stacks)).length == 1);
+
+// There are two stacks of red blocks on the middle.
+condition(filter(isOnMiddle, filter(isRed, world.stacks)).length == 2);
+
+",There is one stack of yellow blocks on the left side of the table.,"condition(filter(isOnLeft, filter(isYellow, world.stacks)).length == 1);",There are two stacks of red blocks on the middle.,"condition(filter(isOnMiddle, filter(isRed, world.stacks)).length == 2);",,,,
+20,"There are two stacks of red blocks on the left side of the table, and there are two stacks of yellow blocks on the right side.",1,1,,,There are two stacks of red blocks on the left side of the table.,There are two stacks of yellow blocks on the right side.,,,"condition(filter(isOnLeft, filter(isRed, world.stacks)).length == 2);
+condition(filter(isOnRight, filter(isYellow, world.stacks)).length == 2);","condition(filter(isOnLeft, filter(isRed, world.stacks)).length == 2);","condition(filter(isOnRight, filter(isYellow, world.stacks)).length == 2);",,,medium,4,0,stop,"
+// There are two stacks of red blocks on the left side of the table.
+condition(filter(isOnLeft, filter(isRed, world.stacks)).length == 2);
+
+// There are two stacks of yellow blocks on the right side.
+condition(filter(isOnRight, filter(isYellow, world.stacks)).length == 2);
+
+",There are two stacks of red blocks on the left side of the table.,"condition(filter(isOnLeft, filter(isRed, world.stacks)).length == 2);",There are two stacks of yellow blocks on the right side.,"condition(filter(isOnRight, filter(isYellow, world.stacks)).length == 2);",,,,
+21,"There is one stack of yellow blocks, and there is one stack of red blocks near the yellow stack.",1,1,,,There is one stack of yellow blocks.,There is one stack of red blocks near the yellow stack.,,,"condition(filter(isYellow, world.stacks).length == 1);
+condition(filter(isNear(filter(isYellow, world.stacks)[0]), filter(isRed, world.stacks)).length == 1);","condition(filter(isYellow, world.stacks).length == 1);","condition(filter(isNear(filter(isYellow, world.stacks)[0]), filter(isRed, world.stacks)).length == 1);",,,medium,4,0,stop,"
+// There is one stack of yellow blocks.
+condition(filter(isYellow, world.stacks).length == 1);
+
+// There is one stack of red blocks near the yellow stack.
+condition(filter(isNear(filter(isYellow, world.stacks)[0]), filter(isRed, world.stacks)).length == 1);
+
+",There is one stack of yellow blocks.,"condition(filter(isYellow, world.stacks).length == 1);",There is one stack of red blocks near the yellow stack.,"condition(filter(isNear(filter(isYellow, world.stacks)[0]), filter(isRed, world.stacks)).length == 1);",,,,
+22,"There are three stacks of red blocks on the left side of the table, and there are two stacks of yellow blocks on the right side.",1,1,,,There are three stacks of red blocks on the left side of the table.,There are two stacks of yellow blocks on the right side.,,,"condition(filter(isOnLeft, filter(isRed, world.stacks)).length == 3);
+condition(filter(isOnRight, filter(isYellow, world.stacks)).length == 2);","condition(filter(isOnLeft, filter(isRed, world.stacks)).length == 3);","condition(filter(isOnRight, filter(isYellow, world.stacks)).length == 2);",,,medium,3,0,stop,"
+// There are three stacks of red blocks on the left side of the table.
+condition(filter(isOnLeft, filter(isRed, world.stacks)).length == 3);
+
+// There are two stacks of yellow blocks on the right side.
+condition(filter(isOnRight, filter(isYellow, world.stacks)).length == 2);
+
+",There are three stacks of red blocks on the left side of the table.,"condition(filter(isOnLeft, filter(isRed, world.stacks)).length == 3);",There are two stacks of yellow blocks on the right side.,"condition(filter(isOnRight, filter(isYellow, world.stacks)).length == 2);",,,,
+23,"There are three yellow blocks on the left side of the table, there are six red blocks on the middle, and there are three red blocks on the right side.",1,1,,,There are three yellow blocks on the left side of the table.,There are six red blocks on the middle.,There are three red blocks on the right side.,,"condition(filter(isOnLeft, filter(isYellow, world.blocks)).length == 3);
+condition(filter(isOnMiddle, filter(isRed, world.blocks)).length == 6);
+condition(filter(isOnRight, filter(isRed, world.blocks)).length == 3);","condition(filter(isOnLeft, filter(isYellow, world.blocks)).length == 3);","condition(filter(isOnMiddle, filter(isRed, world.blocks)).length == 6);","condition(filter(isOnRight, filter(isRed, world.blocks)).length == 3);",,medium,2,0,stop,"
+// There are three yellow blocks on the left side of the table.
+condition(filter(isOnLeft, filter(isYellow, world.blocks)).length == 3);
+
+// There are six red blocks on the middle.
+condition(filter(isOnMiddle, filter(isRed, world.blocks)).length == 6);
+
+// There are three red blocks on the right side.
+condition(filter(isOnRight, filter(isRed, world.blocks)).length == 3);
+
+",There are three yellow blocks on the left side of the table.,"condition(filter(isOnLeft, filter(isYellow, world.blocks)).length == 3);",There are six red blocks on the middle.,"condition(filter(isOnMiddle, filter(isRed, world.blocks)).length == 6);",There are three red blocks on the right side.,"condition(filter(isOnRight, filter(isRed, world.blocks)).length == 3);",,
+24,"There are more red blocks than yellow blocks on the table, and there are more yellow blocks than red blocks on the edges of the table.",,1,1,,There are more red blocks than yellow blocks on the table.,There are more yellow blocks than red blocks on the edges of the table.,,,"condition(filter(isRed, world.blocks).length > filter(isYellow, world.blocks).length);
+condition(filter(isOnEdge, filter(isYellow, world.blocks)).length > filter(isOnEdge, filter(isRed, world.blocks)).length);","condition(filter(isRed, world.blocks).length > filter(isYellow, world.blocks).length);","condition(filter(isOnEdge, filter(isYellow, world.blocks)).length > filter(isOnEdge, filter(isRed, world.blocks)).length);",,,medium,6,0,stop,"
+// There are more red blocks than yellow blocks on the table.
+condition(filter(isRed, world.blocks).length > filter(isYellow, world.blocks).length);
+
+// There are more yellow blocks than red blocks on the edges of the table.
+condition(filter(isOnEdge, filter(isYellow, world.blocks)).length > filter(isOnEdge, filter(isRed, world.blocks)).length);
+
+",There are more red blocks than yellow blocks on the table.,"condition(filter(isRed, world.blocks).length > filter(isYellow, world.blocks).length);",There are more yellow blocks than red blocks on the edges of the table.,"condition(filter(isOnEdge, filter(isYellow, world.blocks)).length > filter(isOnEdge, filter(isRed, world.blocks)).length);",,,,
+25,There are many blocks on the table. Most of the blocks on the table are yellow. All of the blocks on the middle of the table are red.,,1,1,,There are many blocks on the table. ,Most of the blocks on the table are yellow.,All of the blocks on the middle of the table are red.,,"condition(world.blocks.length >= 6);
+condition(filter(isYellow, world.blocks).length > world.blocks.length/2);
+condition(filter(isOnMiddle, world.blocks).length > 0 && all(isRed, filter(isOnMiddle, world.blocks)));",condition(world.blocks.length >= 6);,"condition(filter(isYellow, world.blocks).length > world.blocks.length/2);","condition(filter(isOnMiddle, world.blocks).length > 0 && all(isRed, filter(isOnMiddle, world.blocks)));",,medium,5,0,stop,"
+// There are many blocks on the table.
+condition(world.blocks.length >= 10);
+
+// Most of the blocks on the table are yellow.
+condition(filter(isYellow, world.blocks).length >= world.blocks.length / 2);
+
+// All of the blocks on the middle of the table are red.
+condition(filter(isOnMiddle, world.blocks).length > 0 && all(isRed, filter(isOnMiddle, world.blocks)));
+
+",There are many blocks on the table.,condition(world.blocks.length >= 10);,Most of the blocks on the table are yellow.,"condition(filter(isYellow, world.blocks).length >= world.blocks.length / 2);",All of the blocks on the middle of the table are red.,"condition(filter(isOnMiddle, world.blocks).length > 0 && all(isRed, filter(isOnMiddle, world.blocks)));",,
+26,There are more red blocks than yellow blocks on the table. All of the blocks on the edges of the table are yellow.,,1,1,,There are more red blocks than yellow blocks on the table.,All of the blocks on the edges of the table are yellow.,,,"condition(filter(isRed, world.blocks).length > filter(isYellow, world.blocks).length);
+condition(filter(isOnEdge, world.blocks).length > 0 && all(isYellow, filter(isOnEdge, world.blocks)));","condition(filter(isRed, world.blocks).length > filter(isYellow, world.blocks).length);","condition(filter(isOnEdge, world.blocks).length > 0 && all(isYellow, filter(isOnEdge, world.blocks)));",,,medium,6,0,stop,"
+// There are more red blocks than yellow blocks on the table.
+condition(filter(isRed, world.blocks).length > filter(isYellow, world.blocks).length);
+
+// All of the blocks on the edges of the table are yellow.
+condition(filter(isOnEdge, world.blocks).length > 0 && all(isYellow, filter(isOnEdge, world.blocks)));
+
+",There are more red blocks than yellow blocks on the table.,"condition(filter(isRed, world.blocks).length > filter(isYellow, world.blocks).length);",All of the blocks on the edges of the table are yellow.,"condition(filter(isOnEdge, world.blocks).length > 0 && all(isYellow, filter(isOnEdge, world.blocks)));",,,,
+27,There are many blocks on the table. Not all of the blocks on the left side are yellow. Most of the blocks on the right side are red.,,1,2,,There are many blocks on the table.,Not all of the blocks on the left side are yellow.,Most of the blocks on the right side are red.,,"condition(world.blocks.length >= 6);
+condition(!all(isYellow, filter(isOnLeft, world.blocks)));
+condition(filter(isRed, filter(isOnRight, world.blocks)).length > filter(isOnRight, world.blocks).length/2);",condition(world.blocks.length >= 6);,"condition(!all(isYellow, filter(isOnLeft, world.blocks)));","condition(filter(isRed, filter(isOnRight, world.blocks)).length > filter(isOnRight, world.blocks).length/2);",,medium,3,0,stop,"
+// There are many blocks on the table.
+condition(world.blocks.length >= 6);
+
+// Not all of the blocks on the left side are yellow.
+condition(!all(isYellow, filter(isOnLeft, world.blocks)));
+
+// Most of the blocks on the right side are red.
+condition(filter(isOnRight, filter(isRed, world.blocks)).length > world.blocks.length/2);
+
+",There are many blocks on the table.,condition(world.blocks.length >= 6);,Not all of the blocks on the left side are yellow.,"condition(!all(isYellow, filter(isOnLeft, world.blocks)));",Most of the blocks on the right side are red.,"condition(filter(isOnRight, filter(isRed, world.blocks)).length > world.blocks.length/2);",,
+28,"There are red blocks on the edges of the table, and there are no yellow blocks on the egdes of the table.",,1,2,,There are red blocks on the edges of the table.,There are no yellow blocks on the egdes of the table.,,,"condition(filter(isOnEdge, filter(isRed, world.blocks)).length > 0);
+condition(filter(isOnEdge, filter(isYellow, world.blocks)).length == 0);","condition(filter(isOnEdge, filter(isRed, world.blocks)).length > 0);","condition(filter(isOnEdge, filter(isYellow, world.blocks)).length == 0);",,,medium,2,0,stop,"
+// There are red blocks on the edges of the table.
+condition(filter(isOnEdge, filter(isRed, world.blocks)).length > 0);
+
+// There are no yellow blocks on the egdes of the table.
+condition(filter(isOnEdge, filter(isYellow, world.blocks)).length == 0);
+
+",There are red blocks on the edges of the table.,"condition(filter(isOnEdge, filter(isRed, world.blocks)).length > 0);",There are no yellow blocks on the egdes of the table.,"condition(filter(isOnEdge, filter(isYellow, world.blocks)).length == 0);",,,,
+29,"There are many yellow blocks on the left side of the table, there are no blocks on the middle, and there are no blocks on the right side.",,1,2,,There are many yellow blocks on the left side of the table.,There are no blocks on the middle.,There are no blocks on the right side.,,"condition(filter(isOnLeft, filter(isYellow, world.blocks)).length >= 6);
+condition(filter(isOnMiddle, world.blocks).length == 0);
+condition(filter(isOnRight, world.blocks).length == 0);","condition(filter(isOnLeft, filter(isYellow, world.blocks)).length >= 6);","condition(filter(isOnMiddle, world.blocks).length == 0);","condition(filter(isOnRight, world.blocks).length == 0);",,medium,7,0,stop,"
+// There are many yellow blocks on the left side of the table.
+condition(filter(isOnLeft, filter(isYellow, world.blocks)).length >= 6);
+
+// There are no blocks on the middle.
+condition(filter(isOnMiddle, world.blocks).length == 0);
+
+// There are no blocks on the right side.
+condition(filter(isOnRight, world.blocks).length == 0);
+
+",There are many yellow blocks on the left side of the table.,"condition(filter(isOnLeft, filter(isYellow, world.blocks)).length >= 6);",There are no blocks on the middle.,"condition(filter(isOnMiddle, world.blocks).length == 0);",There are no blocks on the right side.,"condition(filter(isOnRight, world.blocks).length == 0);",,
+30,"There are some stacks of red blocks on the middle of the table, and there are some stacks of yellow blocks on the right side. There are no blocks on the left side.",,1,2,,There are some stacks of red blocks on the middle of the table.,There are some stacks of yellow blocks on the right side.,There are no blocks on the left side.,,"condition(filter(isOnMiddle, filter(isRed, world.stacks)).length > 0);
+condition(filter(isOnRight, filter(isYellow, world.stacks)).length > 0);
+condition(filter(isOnLeft, world.blocks).length == 0);","condition(filter(isOnMiddle, filter(isRed, world.stacks)).length > 0);","condition(filter(isOnRight, filter(isYellow, world.stacks)).length > 0);","condition(filter(isOnLeft, world.blocks).length == 0);",,medium,5,0,stop,"
+// There are some stacks of red blocks on the middle of the table.
+condition(filter(isOnMiddle, filter(isRed, world.stacks)).length > 0);
+
+// There are some stacks of yellow blocks on the right side.
+condition(filter(isOnRight, filter(isYellow, world.stacks)).length > 0);
+
+// There are no blocks on the left side.
+condition(filter(isOnLeft, world.blocks).length == 0);
+
+",There are some stacks of red blocks on the middle of the table.,"condition(filter(isOnMiddle, filter(isRed, world.stacks)).length > 0);",There are some stacks of yellow blocks on the right side.,"condition(filter(isOnRight, filter(isYellow, world.stacks)).length > 0);",There are no blocks on the left side.,"condition(filter(isOnLeft, world.blocks).length == 0);",,
+31,"There are several stacks of red blocks on the table, and there are at most two stacks of yellow blocks on the table.",1,,1,,There are several stacks of red blocks on the table.,There are at most two stacks of yellow blocks on the table.,,,"condition(filter(isRed, world.stacks).length > 2 && filter(isRed, world.stacks).length <= 5);
+condition(filter(isYellow, world.stacks).length <= 2);","condition(filter(isRed, world.stacks).length > 2 && filter(isRed, world.stacks).length <= 5);","condition(filter(isYellow, world.stacks).length <= 2);",,,medium,2,0,stop,"
+// There are several stacks of red blocks on the table.
+condition(filter(isRed, world.stacks).length > 2);
+
+// There are at most two stacks of yellow blocks on the table.
+condition(filter(isYellow, world.stacks).length <= 2);
+
+",There are several stacks of red blocks on the table.,"condition(filter(isRed, world.stacks).length > 2);",There are at most two stacks of yellow blocks on the table.,"condition(filter(isYellow, world.stacks).length <= 2);",,,,
+32,"There are at least seven red blocks on the table, and there are many yellow blocks on the table.",1,,1,,There are at least seven red blocks on the table.,There are many yellow blocks on the table.,,,"condition(filter(isRed, world.blocks).length >= 7);
+condition(filter(isYellow, world.blocks).length >= 6);","condition(filter(isRed, world.blocks).length >= 7);","condition(filter(isYellow, world.blocks).length >= 6);",,,medium,3,0,stop,"
+// There are at least seven red blocks on the table.
+condition(filter(isRed, world.blocks).length >= 7);
+
+// There are many yellow blocks on the table.
+condition(filter(isYellow, world.blocks).length >= 6);
+
+",There are at least seven red blocks on the table.,"condition(filter(isRed, world.blocks).length >= 7);",There are many yellow blocks on the table.,"condition(filter(isYellow, world.blocks).length >= 6);",,,,
+33,"There are at most six yellow blocks on the table, and there are no more than four red blocks on the table.",1,,2,,There are at most six yellow blocks on the table.,There are no more than four red blocks on the table.,,,"condition(filter(isYellow, world.blocks).length <= 6);
+condition(filter(isRed, world.blocks).length <= 4);","condition(filter(isYellow, world.blocks).length <= 6);","condition(filter(isRed, world.blocks).length <= 4);",,,medium,5,0,stop,"
+// There are at most six yellow blocks on the table.
+condition(filter(isYellow, world.blocks).length <= 6);
+
+// There are no more than four red blocks on the table.
+condition(filter(isRed, world.blocks).length <= 4);
+
+",There are at most six yellow blocks on the table.,"condition(filter(isYellow, world.blocks).length <= 6);",There are no more than four red blocks on the table.,"condition(filter(isRed, world.blocks).length <= 4);",,,,
+34,"There are eight red blocks on the table, and there are no yellow blocks on the table.",1,,2,,There are eight red blocks on the table.,There are no yellow blocks on the table.,,,"condition(filter(isRed, world.blocks).length == 8);
+condition(filter(isYellow, world.blocks).length == 0);","condition(filter(isRed, world.blocks).length == 8);","condition(filter(isYellow, world.blocks).length == 0);",,,medium,1,0,stop,"
+// There are eight red blocks on the table.
+condition(filter(isRed, world.blocks).length == 8);
+
+// There are no yellow blocks on the table.
+condition(filter(isYellow, world.blocks).length == 0);
+
+",There are eight red blocks on the table.,"condition(filter(isRed, world.blocks).length == 8);",There are no yellow blocks on the table.,"condition(filter(isYellow, world.blocks).length == 0);",,,,
+35,"There are two tall stacks of yellow blocks, and there are two short stacks of red blocks.",1,,,1,There are two tall stacks of yellow blocks.,There are two short stacks of red blocks.,,,"condition(filter(isTall, filter(isYellow, world.stacks)).length == 2);
+condition(filter(isShort, filter(isRed, world.stacks)).length == 2);","condition(filter(isTall, filter(isYellow, world.stacks)).length == 2);","condition(filter(isShort, filter(isRed, world.stacks)).length == 2);",,,medium,6,0,stop,"
+// There are two tall stacks of yellow blocks.
+condition(filter(isTall, filter(isYellow, world.stacks)).length == 2);
+
+// There are two short stacks of red blocks.
+condition(filter(isShort, filter(isRed, world.stacks)).length == 2);
+
+",There are two tall stacks of yellow blocks.,"condition(filter(isTall, filter(isYellow, world.stacks)).length == 2);",There are two short stacks of red blocks.,"condition(filter(isShort, filter(isRed, world.stacks)).length == 2);",,,,
+36,"There is one tall stack of red blocks, and there are two short stacks of yellow blocks.",1,,,1,There is one tall stack of red blocks.,There are two short stacks of yellow blocks.,,,"condition(filter(isTall, filter(isRed, world.stacks)).length == 1);
+condition(filter(isShort, filter(isYellow, world.stacks)).length == 2);","condition(filter(isTall, filter(isRed, world.stacks)).length == 1);","condition(filter(isShort, filter(isYellow, world.stacks)).length == 2);",,,medium,4,0,stop,"
+// There is one tall stack of red blocks.
+condition(filter(isTall, filter(isRed, world.stacks)).length == 1);
+
+// There are two short stacks of yellow blocks.
+condition(filter(isShort, filter(isYellow, world.stacks)).length == 2);
+
+",There is one tall stack of red blocks.,"condition(filter(isTall, filter(isRed, world.stacks)).length == 1);",There are two short stacks of yellow blocks.,"condition(filter(isShort, filter(isYellow, world.stacks)).length == 2);",,,,
+37,"There are two tall stacks of yellow blocks, and there are three short stacks of red blocks.",1,,,1,There are two tall stacks of yellow blocks.,There are three short stacks of red blocks.,,,"condition(filter(isTall, filter(isYellow, world.stacks)).length == 2);
+condition(filter(isShort, filter(isRed, world.stacks)).length == 3);","condition(filter(isTall, filter(isYellow, world.stacks)).length == 2);","condition(filter(isShort, filter(isRed, world.stacks)).length == 3);",,,medium,4,0,stop,"
+// There are two tall stacks of yellow blocks.
+condition(filter(isTall, filter(isYellow, world.stacks)).length == 2);
+
+// There are three short stacks of red blocks.
+condition(filter(isShort, filter(isRed, world.stacks)).length == 3);
+
+",There are two tall stacks of yellow blocks.,"condition(filter(isTall, filter(isYellow, world.stacks)).length == 2);",There are three short stacks of red blocks.,"condition(filter(isShort, filter(isRed, world.stacks)).length == 3);",,,,
+38,"There are stacks of yellow blocks, and there are stacks of red blocks. All of the yellow stacks are tall, and all of the red stacks are short.",,,1,1,There are stacks of yellow blocks.,There are stacks of red blocks.,All of the yellow stacks are tall.,All of the red stacks are short.,"condition(filter(isYellow, world.stacks).length > 0);
+condition(filter(isRed, world.stacks).length > 0);
+condition(all(isTall, filter(isYellow, world.stacks)));
+condition(all(isShort, filter(isRed, world.stacks)));","condition(filter(isYellow, world.stacks).length > 0);","condition(filter(isRed, world.stacks).length > 0);","condition(all(isTall, filter(isYellow, world.stacks)));","condition(all(isShort, filter(isRed, world.stacks)));",medium,6,0,stop,"
+// There are stacks of yellow blocks.
+condition(filter(isYellow, world.stacks).length > 0);
+
+// There are stacks of red blocks.
+condition(filter(isRed, world.stacks).length > 0);
+
+// All of the yellow stacks are tall.
+condition(all(isTall, filter(isYellow, world.stacks)));
+
+// All of the red stacks are short.
+condition(all(isShort, filter(isRed, world.stacks)));
+
+",There are stacks of yellow blocks.,"condition(filter(isYellow, world.stacks).length > 0);",There are stacks of red blocks.,"condition(filter(isRed, world.stacks).length > 0);",All of the yellow stacks are tall.,"condition(all(isTall, filter(isYellow, world.stacks)));",All of the red stacks are short.,"condition(all(isShort, filter(isRed, world.stacks)));"
+39,"There are stacks of red blocks, and there are stacks of yellow blocks. All of the red stacks are tall, and some of the yellow stacks are tall.",,,1,1,There are stacks of red blocks.,There are stacks of yellow blocks.,All of the red stacks are tall.,Some of the yellow stacks are tall.,"condition(filter(isRed, world.stacks).length > 0);
+condition(filter(isYellow, world.stacks).length > 0);
+condition(all(isTall, filter(isRed, world.stacks)));
+condition(any(isShort, filter(isYellow, world.stacks)));","condition(filter(isRed, world.stacks).length > 0);","condition(filter(isYellow, world.stacks).length > 0);","condition(all(isTall, filter(isRed, world.stacks)));","condition(any(isShort, filter(isYellow, world.stacks)));",medium,2,0,stop,"
+// There are stacks of red blocks.
+condition(filter(isRed, world.stacks).length > 0);
+
+// There are stacks of yellow blocks.
+condition(filter(isYellow, world.stacks).length > 0);
+
+// All of the red stacks are tall.
+condition(all(isTall, filter(isRed, world.stacks)));
+
+// Some of the yellow stacks are tall.
+condition(filter(isTall, filter(isYellow, world.stacks)).length > 0);
+
+",There are stacks of red blocks.,"condition(filter(isRed, world.stacks).length > 0);",There are stacks of yellow blocks.,"condition(filter(isYellow, world.stacks).length > 0);",All of the red stacks are tall.,"condition(all(isTall, filter(isRed, world.stacks)));",Some of the yellow stacks are tall.,"condition(filter(isTall, filter(isYellow, world.stacks)).length > 0);"
+40,"There are some short stacks of yellow blocks, and there are some tall stacks of red blocks.",,,1,1,There are some short stacks of yellow blocks.,There are some tall stacks of red blocks.,,,"condition(filter(isShort, filter(isYellow, world.stacks)).length > 0);
+condition(filter(isTall, filter(isRed, world.stacks)).length > 0);","condition(filter(isShort, filter(isYellow, world.stacks)).length > 0);","condition(filter(isTall, filter(isRed, world.stacks)).length > 0);",,,medium,3,0,stop,"
+// There are some short stacks of yellow blocks.
+condition(filter(isShort, filter(isYellow, world.stacks)).length > 0);
+
+// There are some tall stacks of red blocks.
+condition(filter(isTall, filter(isRed, world.stacks)).length > 0);
+
+",There are some short stacks of yellow blocks.,"condition(filter(isShort, filter(isYellow, world.stacks)).length > 0);",There are some tall stacks of red blocks.,"condition(filter(isTall, filter(isRed, world.stacks)).length > 0);",,,,
+41,"There are many red blocks on the left side of the table, and there is at most one stack of yellow blocks on the right side.",1,1,1,,There are many red blocks on the left side of the table.,There is at most one stack of yellow blocks on the right side.,,,"condition(filter(isOnLeft, filter(isRed, world.blocks)).length >= 6);
+condition(filter(isOnRight, filter(isYellow, world.stacks)).length <= 1);","condition(filter(isOnLeft, filter(isRed, world.blocks)).length >= 6);","condition(filter(isOnRight, filter(isYellow, world.stacks)).length <= 1);",,,high,3,0,stop,"
+// There are many red blocks on the left side of the table.
+condition(filter(isOnLeft, filter(isRed, world.blocks)).length >= 6);
+
+// There is at most one stack of yellow blocks on the right side.
+condition(filter(isOnRight, filter(isYellow, world.stacks)).length <= 1);
+
+",There are many red blocks on the left side of the table.,"condition(filter(isOnLeft, filter(isRed, world.blocks)).length >= 6);",There is at most one stack of yellow blocks on the right side.,"condition(filter(isOnRight, filter(isYellow, world.stacks)).length <= 1);",,,,
+42,"There is one stack of yellow blocks on the left side of the table, and there are some red blocks on the middle.",1,1,1,,There is one stack of yellow blocks on the left side of the table.,There are some red blocks on the middle.,,,"condition(filter(isOnLeft, filter(isYellow, world.stacks)).length == 1);
+condition(filter(isOnMiddle, filter(isRed, world.blocks)).length > 0);","condition(filter(isOnLeft, filter(isYellow, world.stacks)).length == 1);","condition(filter(isOnMiddle, filter(isRed, world.blocks)).length > 0);",,,high,6,0,stop,"
+// There is one stack of yellow blocks on the left side of the table.
+condition(filter(isOnLeft, filter(isYellow, world.stacks)).length == 1);
+
+// There are some red blocks on the middle.
+condition(filter(isOnMiddle, filter(isRed, world.blocks)).length > 0);
+
+",There is one stack of yellow blocks on the left side of the table.,"condition(filter(isOnLeft, filter(isYellow, world.stacks)).length == 1);",There are some red blocks on the middle.,"condition(filter(isOnMiddle, filter(isRed, world.blocks)).length > 0);",,,,
+43,"There are many red blocks on the left side of the table, and there are two stacks of yellow blocks on the left side.",1,1,1,,There are many red blocks on the left side of the table.,There are two stacks of yellow blocks on the left side.,,,"condition(filter(isOnLeft, filter(isRed, world.blocks)).length >= 6);
+condition(filter(isOnLeft, filter(isYellow, world.stacks)).length == 2);","condition(filter(isOnLeft, filter(isRed, world.blocks)).length >= 6);","condition(filter(isOnLeft, filter(isYellow, world.stacks)).length == 2);",,,high,4,0,stop,"
+// There are many red blocks on the left side of the table.
+condition(filter(isOnLeft, filter(isRed, world.blocks)).length >= 6);
+
+// There are two stacks of yellow blocks on the left side.
+condition(filter(isOnLeft, filter(isYellow, world.stacks)).length == 2);
+
+",There are many red blocks on the left side of the table.,"condition(filter(isOnLeft, filter(isRed, world.blocks)).length >= 6);",There are two stacks of yellow blocks on the left side.,"condition(filter(isOnLeft, filter(isYellow, world.stacks)).length == 2);",,,,
+44,"There are three yellow blocks on the right side of the table, and there are many red blocks on the right side.",1,1,1,,There are three yellow blocks on the right side of the table.,There are many red blocks on the right side.,,,"condition(filter(isOnRight, filter(isYellow, world.blocks)).length == 3);
+condition(filter(isOnRight, filter(isRed, world.blocks)).length >= 6);","condition(filter(isOnRight, filter(isYellow, world.blocks)).length == 3);","condition(filter(isOnRight, filter(isRed, world.blocks)).length >= 6);",,,high,2,0,stop,"
+// There are three yellow blocks on the right side of the table.
+condition(filter(isOnRight, filter(isYellow, world.blocks)).length == 3);
+
+// There are many red blocks on the right side.
+condition(filter(isOnRight, filter(isRed, world.blocks)).length >= 6);
+
+",There are three yellow blocks on the right side of the table.,"condition(filter(isOnRight, filter(isYellow, world.blocks)).length == 3);",There are many red blocks on the right side.,"condition(filter(isOnRight, filter(isRed, world.blocks)).length >= 6);",,,,
+45,"There are four red blocks on the left side of the table, and there are no less than five yellow blocks on the right side.",1,1,2,,There are four red blocks on the left side of the table.,There are no less than five yellow blocks on the right side.,,,"condition(filter(isOnLeft, filter(isRed, world.blocks)).length == 4);
+condition(filter(isOnRight, filter(isYellow, world.blocks)).length >= 5);","condition(filter(isOnLeft, filter(isRed, world.blocks)).length == 4);","condition(filter(isOnRight, filter(isYellow, world.blocks)).length >= 5);",,,high,5,0,stop,"
+// There are four red blocks on the left side of the table.
+condition(filter(isOnLeft, filter(isRed, world.blocks)).length == 4);
+
+// There are no less than five yellow blocks on the right side.
+condition(filter(isOnRight, filter(isYellow, world.blocks)).length >= 5);
+
+",There are four red blocks on the left side of the table.,"condition(filter(isOnLeft, filter(isRed, world.blocks)).length == 4);",There are no less than five yellow blocks on the right side.,"condition(filter(isOnRight, filter(isYellow, world.blocks)).length >= 5);",,,,
+46,"There are eight red blocks on the middle of the table, and no more than half of the blocks on the edges of the table are yellow.",1,1,2,,There are eight red blocks on the middle of the table.,No more than half of the blocks on the edges of the table are yellow.,,,"condition(filter(isOnMiddle, filter(isRed, world.blocks)).length == 8);
+condition(filter(isYellow, filter(isOnEdge, world.blocks)).length <= filter(isOnEdge, world.blocks).length/2);","condition(filter(isOnMiddle, filter(isRed, world.blocks)).length == 8);","condition(filter(isYellow, filter(isOnEdge, world.blocks)).length <= filter(isOnEdge, world.blocks).length/2);",,,high,2,0,stop,"
+// There are eight red blocks on the middle of the table.
+condition(filter(isOnMiddle, filter(isRed, world.blocks)).length == 8);
+
+// No more than half of the blocks on the edges of the table are yellow.
+condition(filter(isOnEdge, filter(isYellow, world.blocks)).length <= filter(isOnEdge, world.blocks).length/2);
+
+",There are eight red blocks on the middle of the table.,"condition(filter(isOnMiddle, filter(isRed, world.blocks)).length == 8);",No more than half of the blocks on the edges of the table are yellow.,"condition(filter(isOnEdge, filter(isYellow, world.blocks)).length <= filter(isOnEdge, world.blocks).length/2);",,,,
+47,"There is one stack of yellow blocks on the middle of the table, and there are two short stacks of red blocks near the yellow stack.",1,1,,1,There is one stack of yellow blocks on the middle of the table.,There are two short stacks of red blocks near the yellow stack.,,,"condition(filter(isOnMiddle, filter(isYellow, world.stacks)).length == 1);
+condition(filter(isNear(filter(isOnMiddle, filter(isYellow, world.stacks))[0]), filter(isShort, filter(isRed, world.stacks))).length == 2);","condition(filter(isOnMiddle, filter(isYellow, world.stacks)).length == 1);","condition(filter(isNear(filter(isOnMiddle, filter(isYellow, world.stacks))[0]), filter(isShort, filter(isRed, world.stacks))).length == 2);",,,high,4,0,stop,"
+// There is one stack of yellow blocks on the middle of the table.
+condition(filter(isOnMiddle, filter(isYellow, world.stacks)).length == 1);
+
+// There are two short stacks of red blocks near the yellow stack.
+condition(filter(isNear(filter(isOnMiddle, filter(isYellow, world.stacks))[0]), filter(isShort, filter(isRed, world.stacks))).length == 2);
+
+",There is one stack of yellow blocks on the middle of the table.,"condition(filter(isOnMiddle, filter(isYellow, world.stacks)).length == 1);",There are two short stacks of red blocks near the yellow stack.,"condition(filter(isNear(filter(isOnMiddle, filter(isYellow, world.stacks))[0]), filter(isShort, filter(isRed, world.stacks))).length == 2);",,,,
+48,"There is one stack of red blocks on the left edge of the table, and there are two tall stacks of yellow blocks near the red stack.",1,1,,1,There is one stack of red blocks on the left edge of the table.,There are two tall stacks of yellow blocks near the red stack.,,,"condition(filter(isOnEdge, filter(isOnLeft, filter(isRed, world.stacks))).length == 1);
+condition(filter(isNear(filter(isOnEdge, filter(isOnLeft, filter(isRed, world.stacks)))[0]), filter(isTall, filter(isYellow, world.stacks))).length == 2);","condition(filter(isOnEdge, filter(isOnLeft, filter(isRed, world.stacks))).length == 1);","condition(filter(isNear(filter(isOnEdge, filter(isOnLeft, filter(isRed, world.stacks)))[0]), filter(isTall, filter(isYellow, world.stacks))).length == 2);",,,high,6,0,stop,"
+// There is one stack of red blocks on the left edge of the table.
+condition(filter(isOnEdge, filter(isRed, world.stacks)).length == 1);
+
+// There are two tall stacks of yellow blocks near the red stack.
+condition(filter(isNear(filter(isOnEdge, filter(isRed, world.stacks))[0]), filter(isTall, filter(isYellow, world.stacks))).length == 2);
+
+",There is one stack of red blocks on the left edge of the table.,"condition(filter(isOnEdge, filter(isRed, world.stacks)).length == 1);",There are two tall stacks of yellow blocks near the red stack.,"condition(filter(isNear(filter(isOnEdge, filter(isRed, world.stacks))[0]), filter(isTall, filter(isYellow, world.stacks))).length == 2);",,,,
+49,"There is one stack of yellow blocks on the center of the table, and there is one tall stack of red blocks near the yellow stack.",1,1,,1,There is one stack of yellow blocks on the center of the table.,There is one tall stack of red blocks near the yellow stack.,,,"condition(filter(isOnCenter, filter(isYellow, world.stacks)).length == 1);
+condition(filter(isNear(filter(isOnCenter, filter(isYellow, world.stacks))[0]), filter(isTall, filter(isRed, world.stacks))).length == 1);","condition(filter(isOnCenter, filter(isYellow, world.stacks)).length == 1);","condition(filter(isNear(filter(isOnCenter, filter(isYellow, world.stacks))[0]), filter(isTall, filter(isRed, world.stacks))).length == 1);",,,high,3,0,stop,"
+// There is one stack of yellow blocks on the center of the table.
+condition(filter(isOnCenter, filter(isYellow, world.stacks)).length == 1);
+
+// There is one tall stack of red blocks near the yellow stack.
+condition(filter(isNear(filter(isOnCenter, filter(isYellow, world.stacks))[0]), filter(isTall, filter(isRed, world.stacks))).length == 1);
+
+",There is one stack of yellow blocks on the center of the table.,"condition(filter(isOnCenter, filter(isYellow, world.stacks)).length == 1);",There is one tall stack of red blocks near the yellow stack.,"condition(filter(isNear(filter(isOnCenter, filter(isYellow, world.stacks))[0]), filter(isTall, filter(isRed, world.stacks))).length == 1);",,,,
+50,"There is one tall stack of red blocks on the right edge of the table, and there are two yellow blocks on the middle of the table.",1,1,,1,There is one tall stack of red blocks on the right edge of the table.,There are two yellow blocks on the middle of the table.,,,"condition(filter(isOnEdge, filter(isOnRight, filter(isTall, filter(isRed, world.stacks)))).length == 1);
+condition(filter(isOnMiddle, filter(isYellow, world.blocks)).length == 2);","condition(filter(isOnEdge, filter(isOnRight, filter(isTall, filter(isRed, world.stacks)))).length == 1);","condition(filter(isOnMiddle, filter(isYellow, world.blocks)).length == 2);",,,high,1,0,stop,"
+// There is one tall stack of red blocks on the right edge of the table.
+condition(filter(isOnEdge, filter(isTall, filter(isRed, world.stacks))).length == 1);
+
+// There are two yellow blocks on the middle of the table.
+condition(filter(isOnMiddle, filter(isYellow, world.blocks)).length == 2);
+
+",There is one tall stack of red blocks on the right edge of the table.,"condition(filter(isOnEdge, filter(isTall, filter(isRed, world.stacks))).length == 1);",There are two yellow blocks on the middle of the table.,"condition(filter(isOnMiddle, filter(isYellow, world.blocks)).length == 2);",,,,
+51,There are less stacks of yellow blocks than stacks of red blocks on the table. All of the yellow stacks are short. ,,1,1,1,There are less stacks of yellow blocks than stacks of red blocks on the table.,All of the yellow stacks are short. ,,,"condition(filter(isYellow, world.stacks).length < filter(isRed, world.stacks).length);
+condition(filter(isYellow, world.stacks).length > 0 && all(isShort, filter(isYellow, world.stacks)));","condition(filter(isYellow, world.stacks).length < filter(isRed, world.stacks).length);","condition(filter(isYellow, world.stacks).length > 0 && all(isShort, filter(isYellow, world.stacks)));",,,high,2,0,stop,"
+// There are less stacks of yellow blocks than stacks of red blocks on the table.
+condition(filter(isYellow, world.stacks).length < filter(isRed, world.stacks).length);
+
+// All of the yellow stacks are short.
+condition(all(isShort, filter(isYellow, world.stacks)));
+
+",There are less stacks of yellow blocks than stacks of red blocks on the table.,"condition(filter(isYellow, world.stacks).length < filter(isRed, world.stacks).length);",All of the yellow stacks are short.,"condition(all(isShort, filter(isYellow, world.stacks)));",,,,
+52,"There are several stacks of red blocks on the table, and there are a few blocks on the edges of the table. Less than half of the blocks on the edges are yellow.",,1,1,1,There are several stacks of red blocks on the table.,There are a few blocks on the edges of the table. ,Less than half of the blocks on the edges are yellow.,,"condition(filter(isRed, world.stacks).length > 2 && filter(isRed, world.stacks).length <= 5);
+condition(filter(isOnEdge, world.blocks).length > 1 && filter(isOnEdge, world.blocks).length <= 4);
+condition(filter(isYellow, filter(isOnEdge, world.blocks)).length < filter(isOnEdge, world.blocks).length/2);","condition(filter(isRed, world.stacks).length > 2 && filter(isRed, world.stacks).length <= 5);","condition(filter(isOnEdge, world.blocks).length > 1 && filter(isOnEdge, world.blocks).length <= 4);","condition(filter(isYellow, filter(isOnEdge, world.blocks)).length < filter(isOnEdge, world.blocks).length/2);",,high,2,0,stop,"
+// There are several stacks of red blocks on the table.
+condition(filter(isRed, world.stacks).length > 1);
+
+// There are a few blocks on the edges of the table.
+condition(filter(isOnEdge, world.blocks).length > 1);
+
+// Less than half of the blocks on the edges are yellow.
+condition(filter(isYellow, filter(isOnEdge, world.blocks)).length < filter(isOnEdge, world.blocks).length/2);
+
+",There are several stacks of red blocks on the table.,"condition(filter(isRed, world.stacks).length > 1);",There are a few blocks on the edges of the table.,"condition(filter(isOnEdge, world.blocks).length > 1);",Less than half of the blocks on the edges are yellow.,"condition(filter(isYellow, filter(isOnEdge, world.blocks)).length < filter(isOnEdge, world.blocks).length/2);",,
+53,There are more stacks of yellow blocks than stacks of red blocks on the table. None of the yellow stacks are tall. Most of the red stacks are tall.,,1,2,1,There are more stacks of yellow blocks than stacks of red blocks on the table. ,None of the yellow stacks are tall. ,Most of the red stacks are tall.,,"condition(filter(isYellow, world.stacks).length > filter(isRed, world.stacks).length);
+condition(filter(isTall, filter(isYellow, world.stacks)).length == 0);
+condition(filter(isTall, filter(isRed, world.stacks)).length > filter(isRed, world.stacks).length/2);","condition(filter(isYellow, world.stacks).length > filter(isRed, world.stacks).length);","condition(filter(isTall, filter(isYellow, world.stacks)).length == 0);","condition(filter(isTall, filter(isRed, world.stacks)).length > filter(isRed, world.stacks).length/2);",,high,4,0,stop,"
+// There are more stacks of yellow blocks than stacks of red blocks on the table.
+condition(filter(isYellow, world.stacks).length > filter(isRed, world.stacks).length);
+
+// None of the yellow stacks are tall.
+condition(filter(isTall, filter(isYellow, world.stacks)).length == 0);
+
+// Most of the red stacks are tall.
+condition(filter(isTall, filter(isRed, world.stacks)).length > filter(isRed, world.stacks).length/2);
+
+",There are more stacks of yellow blocks than stacks of red blocks on the table.,"condition(filter(isYellow, world.stacks).length > filter(isRed, world.stacks).length);",None of the yellow stacks are tall.,"condition(filter(isTall, filter(isYellow, world.stacks)).length == 0);",Most of the red stacks are tall.,"condition(filter(isTall, filter(isRed, world.stacks)).length > filter(isRed, world.stacks).length/2);",,
+54,"There are several stacks of red blocks on the table, and none of the red stacks are tall. There are a few yellow blocks, and all of the yellow blocks are on the egdes of the table.",,1,2,1,There are several stacks of red blocks on the table.,None of the red stacks are tall. ,There are a few yellow blocks.,All of the yellow blocks are on the egdes of the table.,"condition(filter(isRed, world.stacks).length > 2 && filter(isRed, world.stacks).length <= 5);
+condition(filter(isTall, filter(isRed, world.stacks)).length == 0);
+condition(filter(isYellow, world.blocks).length > 1 && filter(isYellow, world.blocks).length <= 4);
+condition(all(isOnEdge, filter(isYellow, world.blocks)));","condition(filter(isRed, world.stacks).length > 2 && filter(isRed, world.stacks).length <= 5);","condition(filter(isTall, filter(isRed, world.stacks)).length == 0);","condition(filter(isYellow, world.blocks).length > 1 && filter(isYellow, world.blocks).length <= 4);","condition(all(isOnEdge, filter(isYellow, world.blocks)));",high,5,0,stop,"
+// There are several stacks of red blocks on the table.
+condition(filter(isRed, world.stacks).length > 1);
+
+// None of the red stacks are tall.
+condition(all(isShort, filter(isRed, world.stacks)));
+
+// There are a few yellow blocks.
+condition(filter(isYellow, world.blocks).length > 1 && filter(isYellow, world.blocks).length <= 4);
+
+// All of the yellow blocks are on the egdes of the table.
+condition(all(isOnEdge, filter(isYellow, world.blocks)));
+
+",There are several stacks of red blocks on the table.,"condition(filter(isRed, world.stacks).length > 1);",None of the red stacks are tall.,"condition(all(isShort, filter(isRed, world.stacks)));",There are a few yellow blocks.,"condition(filter(isYellow, world.blocks).length > 1 && filter(isYellow, world.blocks).length <= 4);",All of the yellow blocks are on the egdes of the table.,"condition(all(isOnEdge, filter(isYellow, world.blocks)));"
+55,"There are two tall stacks of yellow blocks, and there are several short stacks of red blocks.",1,,1,1,There are two tall stacks of yellow blocks.,There are several short stacks of red blocks.,,,"condition(filter(isTall, filter(isYellow, world.stacks)).length == 2);
+condition(filter(isShort, filter(isRed, world.stacks)).length > 2 && filter(isShort, filter(isRed, world.stacks)).length <= 5);","condition(filter(isTall, filter(isYellow, world.stacks)).length == 2);","condition(filter(isShort, filter(isRed, world.stacks)).length > 2 && filter(isShort, filter(isRed, world.stacks)).length <= 5);",,,high,5,0,stop,"
+// There are two tall stacks of yellow blocks.
+condition(filter(isTall, filter(isYellow, world.stacks)).length == 2);
+
+// There are several short stacks of red blocks.
+condition(filter(isShort, filter(isRed, world.stacks)).length > 1);
+
+",There are two tall stacks of yellow blocks.,"condition(filter(isTall, filter(isYellow, world.stacks)).length == 2);",There are several short stacks of red blocks.,"condition(filter(isShort, filter(isRed, world.stacks)).length > 1);",,,,
+56,"There are a few tall stacks of red blocks, and there are four stacks of yellow blocks.",1,,1,1,There are a few tall stacks of red blocks.,There are four stacks of yellow blocks.,,,"condition(filter(isTall, filter(isRed, world.stacks)).length > 1 && filter(isTall, filter(isRed, world.stacks)).length <= 4);
+condition(filter(isYellow, world.stacks).length == 4);","condition(filter(isTall, filter(isRed, world.stacks)).length > 1 && filter(isTall, filter(isRed, world.stacks)).length <= 4);","condition(filter(isYellow, world.stacks).length == 4);",,,high,4,0,stop,"
+// There are a few tall stacks of red blocks.
+condition(filter(isTall, filter(isRed, world.stacks)).length > 2 && filter(isTall, filter(isRed, world.stacks)).length <= 5);
+
+// There are four stacks of yellow blocks.
+condition(filter(isYellow, world.stacks).length == 4);
+
+",There are a few tall stacks of red blocks.,"condition(filter(isTall, filter(isRed, world.stacks)).length > 2 && filter(isTall, filter(isRed, world.stacks)).length <= 5);",There are four stacks of yellow blocks.,"condition(filter(isYellow, world.stacks).length == 4);",,,,
+57,"There are many stacks of blocks on the table. There are no tall yellow stacks, and there are less than four tall red stacks.",1,,2,1,There are many stacks of blocks on the table.,There are no tall yellow stacks.,There are less than four tall red stacks.,,"condition(world.stacks.length >= 6);
+condition(filter(isTall, filter(isYellow, world.stacks)).length == 0);
+condition(filter(isTall, filter(isRed, world.stacks)).length <= 4);",condition(world.stacks.length >= 6);,"condition(filter(isTall, filter(isYellow, world.stacks)).length == 0);","condition(filter(isTall, filter(isRed, world.stacks)).length <= 4);",,high,3,0,stop,"
+// There are many stacks of blocks on the table.
+condition(world.stacks.length >= 6);
+
+// There are no tall yellow stacks.
+condition(filter(isTall, filter(isYellow, world.stacks)).length == 0);
+
+// There are less than four tall red stacks.
+condition(filter(isTall, filter(isRed, world.stacks)).length < 4);
+
+",There are many stacks of blocks on the table.,condition(world.stacks.length >= 6);,There are no tall yellow stacks.,"condition(filter(isTall, filter(isYellow, world.stacks)).length == 0);",There are less than four tall red stacks.,"condition(filter(isTall, filter(isRed, world.stacks)).length < 4);",,
+58,"There are three stacks of red blocks, and there are two stacks of yellow blocks. There are no tall red stacks, and there are no short yellow stacks.",1,,2,1,There are three stacks of red blocks.,There are two stacks of yellow blocks. ,There are no tall red stacks.,There are no short yellow stacks.,"condition(filter(isRed, world.stacks).length == 3);
+condition(filter(isYellow, world.stacks).length == 2);
+condition(filter(isTall, filter(isRed, world.stacks)).length == 0);
+condition(filter(isShort, filter(isYellow, world.stacks)).length == 0);","condition(filter(isRed, world.stacks).length == 3);","condition(filter(isYellow, world.stacks).length == 2);","condition(filter(isTall, filter(isRed, world.stacks)).length == 0);","condition(filter(isShort, filter(isYellow, world.stacks)).length == 0);",high,5,0,stop,"
+// There are three stacks of red blocks.
+condition(filter(isRed, world.stacks).length == 3);
+
+// There are two stacks of yellow blocks.
+condition(filter(isYellow, world.stacks).length == 2);
+
+// There are no tall red stacks.
+condition(filter(isTall, filter(isRed, world.stacks)).length == 0);
+
+// There are no short yellow stacks.
+condition(filter(isShort, filter(isYellow, world.stacks)).length == 0);
+
+",There are three stacks of red blocks.,"condition(filter(isRed, world.stacks).length == 3);",There are two stacks of yellow blocks.,"condition(filter(isYellow, world.stacks).length == 2);",There are no tall red stacks.,"condition(filter(isTall, filter(isRed, world.stacks)).length == 0);",There are no short yellow stacks.,"condition(filter(isShort, filter(isYellow, world.stacks)).length == 0);"
+59,"There is one tall stack of yellow blocks on the middle of the table, and there are some red blocks near the yellow stack.",1,1,1,1,There is one tall stack of yellow blocks on the middle of the table.,There are some red blocks near the yellow stack.,,,"condition(filter(isOnMiddle, filter(isTall, filter(isYellow, world.stacks))).length == 1);
+condition(filter(isNear(filter(isOnMiddle, filter(isTall, filter(isYellow, world.stacks)))[0]), filter(isRed, world.blocks)).length > 0);","condition(filter(isOnMiddle, filter(isTall, filter(isYellow, world.stacks))).length == 1);","condition(filter(isNear(filter(isOnMiddle, filter(isTall, filter(isYellow, world.stacks)))[0]), filter(isRed, world.blocks)).length > 0);",,,high,6,0,stop,"
+// There is one tall stack of yellow blocks on the middle of the table.
+condition(filter(isTall, filter(isYellow, filter(isOnMiddle, world.stacks))).length == 1);
+
+// There are some red blocks near the yellow stack.
+condition(filter(isRed, filter(isNear(filter(isTall, filter(isYellow, filter(isOnMiddle, world.stacks)))[0]), world.blocks)).length > 0);
+
+",There is one tall stack of yellow blocks on the middle of the table.,"condition(filter(isTall, filter(isYellow, filter(isOnMiddle, world.stacks))).length == 1);",There are some red blocks near the yellow stack.,"condition(filter(isRed, filter(isNear(filter(isTall, filter(isYellow, filter(isOnMiddle, world.stacks)))[0]), world.blocks)).length > 0);",,,,
+60,"There is at least one tall stack of red blocks on the middle of the table, and there are two stacks of yellow blocks on the right side. There are no blocks on the left side.",1,1,1,1,There is at least one tall stack of red blocks on the middle of the table.,There are two stacks of yellow blocks on the right side. ,There are no blocks on the left side.,,"condition(filter(isOnMiddle, filter(isTall, filter(isRed, world.stacks))).length >= 1);
+condition(filter(isOnRight, filter(isYellow, world.stacks)).length == 2);
+condition(filter(isOnLeft, world.blocks).length == 0);","condition(filter(isOnMiddle, filter(isTall, filter(isRed, world.stacks))).length >= 1);","condition(filter(isOnRight, filter(isYellow, world.stacks)).length == 2);","condition(filter(isOnLeft, world.blocks).length == 0);",,high,5,0,stop,"
+// There is at least one tall stack of red blocks on the middle of the table.
+condition(filter(isOnMiddle, filter(isTall, filter(isRed, world.stacks))).length > 0);
+
+// There are two stacks of yellow blocks on the right side.
+condition(filter(isOnRight, filter(isYellow, world.stacks)).length == 2);
+
+// There are no blocks on the left side.
+condition(filter(isOnLeft, world.blocks).length == 0);
+
+",There is at least one tall stack of red blocks on the middle of the table.,"condition(filter(isOnMiddle, filter(isTall, filter(isRed, world.stacks))).length > 0);",There are two stacks of yellow blocks on the right side.,"condition(filter(isOnRight, filter(isYellow, world.stacks)).length == 2);",There are no blocks on the left side.,"condition(filter(isOnLeft, world.blocks).length == 0);",,
+61,"There are at least two tall stacks of yellow blocks on the left side of the table, and there is at most one tall stack of red blocks on the right side.",1,1,1,1,There are at least two tall stacks of yellow blocks on the left side of the table.,There is at most one tall stack of red blocks on the right side.,,,"condition(filter(isOnLeft, filter(isTall, filter(isYellow, world.stacks))).length >= 2);
+condition(filter(isOnRight, filter(isTall, filter(isRed, world.stacks))).length <= 1);","condition(filter(isOnLeft, filter(isTall, filter(isYellow, world.stacks))).length >= 2);","condition(filter(isOnRight, filter(isTall, filter(isRed, world.stacks))).length <= 1);",,,high,6,0,stop,"
+// There are at least two tall stacks of yellow blocks on the left side of the table.
+condition(filter(isOnLeft, filter(isTall, filter(isYellow, world.stacks))).length >= 2);
+
+// There is at most one tall stack of red blocks on the right side.
+condition(filter(isOnRight, filter(isTall, filter(isRed, world.stacks))).length <= 1);
+
+",There are at least two tall stacks of yellow blocks on the left side of the table.,"condition(filter(isOnLeft, filter(isTall, filter(isYellow, world.stacks))).length >= 2);",There is at most one tall stack of red blocks on the right side.,"condition(filter(isOnRight, filter(isTall, filter(isRed, world.stacks))).length <= 1);",,,,
+62,"There is one tall stack of yellow blocks on the left edge of the table, and there are no red blocks on the right edge.",1,1,2,1,There is one tall stack of yellow blocks on the left edge of the table.,There are no red blocks on the right edge.,,,"condition(filter(isOnEdge, filter(isOnLeft, filter(isTall, filter(isYellow, world.stacks)))).length == 1);
+condition(filter(isOnEdge, filter(isOnRight, filter(isRed, world.stacks))).length == 0);","condition(filter(isOnEdge, filter(isOnLeft, filter(isTall, filter(isYellow, world.stacks)))).length == 1);","condition(filter(isOnEdge, filter(isOnRight, filter(isRed, world.stacks))).length == 0);",,,high,6,0,stop,"
+// There is one tall stack of yellow blocks on the left edge of the table.
+condition(filter(isOnLeft, filter(isTall, filter(isYellow, world.stacks))).length == 1);
+
+// There are no red blocks on the right edge.
+condition(filter(isOnRight, filter(isRed, world.blocks)).length == 0);
+
+",There is one tall stack of yellow blocks on the left edge of the table.,"condition(filter(isOnLeft, filter(isTall, filter(isYellow, world.stacks))).length == 1);",There are no red blocks on the right edge.,"condition(filter(isOnRight, filter(isRed, world.blocks)).length == 0);",,,,
+63,"There are two stacks of blocks on the left side of the table, and there are three stacks of blocks on the right side. All of the stacks on the left side are yellow, and not all of the stacks on the right side are red.",1,1,2,1,There are two stacks of blocks on the left side of the table.,There are three stacks of blocks on the right side.,All of the stacks on the left side are yellow.,Not all of the stacks on the right side are red.,"condition(filter(isOnLeft, world.stacks).length == 2);
+condition(filter(isOnRight, world.stacks).length == 3);
+condition(all(isYellow, filter(isOnLeft, world.stacks)));
+condition(!all(isRed, filter(isOnRight, world.stacks)));","condition(filter(isOnLeft, world.stacks).length == 2);","condition(filter(isOnRight, world.stacks).length == 3);","condition(all(isYellow, filter(isOnLeft, world.stacks)));","condition(!all(isRed, filter(isOnRight, world.stacks)));",high,5,0,stop,"
+// There are two stacks of blocks on the left side of the table.
+condition(filter(isOnLeft, world.stacks).length == 2);
+
+// There are three stacks of blocks on the right side.
+condition(filter(isOnRight, world.stacks).length == 3);
+
+// All of the stacks on the left side are yellow.
+condition(all(isYellow, filter(isOnLeft, world.stacks)));
+
+// Not all of the stacks on the right side are red.
+condition(!all(isRed, filter(isOnRight, world.stacks)));
+
+",There are two stacks of blocks on the left side of the table.,"condition(filter(isOnLeft, world.stacks).length == 2);",There are three stacks of blocks on the right side.,"condition(filter(isOnRight, world.stacks).length == 3);",All of the stacks on the left side are yellow.,"condition(all(isYellow, filter(isOnLeft, world.stacks)));",Not all of the stacks on the right side are red.,"condition(!all(isRed, filter(isOnRight, world.stacks)));"
+64,"There are at least five stacks of blocks on the table. No more than half of the stacks are tall. Most of the stacks are red, and most of the stacks are on the right side.",1,1,2,1,There are at least five stacks of blocks on the table. ,No more than half of the stacks are tall.,Most of the stacks are red.,Most of the stacks are on the right side.,"condition(world.stacks.length >= 5);
+condition(filter(isTall, world.stacks).length <= world.stacks.length/2);
+condition(filter(isRed, world.stacks).length > world.stacks.length/2);
+condition(filter(isOnRight, world.stacks).length > world.stacks.length/2);",condition(world.stacks.length >= 5);,"condition(filter(isTall, world.stacks).length <= world.stacks.length/2);","condition(filter(isRed, world.stacks).length > world.stacks.length/2);","condition(filter(isOnRight, world.stacks).length > world.stacks.length/2);",high,3,0,stop,"
+// There are at least five stacks of blocks on the table.
+condition(world.stacks.length >= 5);
+
+// No more than half of the stacks are tall.
+condition(filter(isTall, world.stacks).length <= world.stacks.length/2);
+
+// Most of the stacks are red.
+condition(filter(isRed, world.stacks).length > world.stacks.length/2);
+
+// Most of the stacks are on the right side.
+condition(filter(isOnRight, world.stacks).length > world.stacks.length/2);
+
+",There are at least five stacks of blocks on the table.,condition(world.stacks.length >= 5);,No more than half of the stacks are tall.,"condition(filter(isTall, world.stacks).length <= world.stacks.length/2);",Most of the stacks are red.,"condition(filter(isRed, world.stacks).length > world.stacks.length/2);",Most of the stacks are on the right side.,"condition(filter(isOnRight, world.stacks).length > world.stacks.length/2);"
