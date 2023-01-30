@@ -216,6 +216,7 @@ def main():
     run_experiment(
         experiment_id=args.experiment_id,
         use_cached=args.use_cached,
+        n_participants=args.n_participants,
         n_simulations=args.n_simulations,
         timeout=args.timeout,
         seed=args.seed,

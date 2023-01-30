@@ -1,9 +1,10 @@
 /**
  * WebPPL generative model of a blockworld.
  */
- var makeBlockWorld = function () {
+var makeBlockWorld = function () {
 
     //// Distributions and parameters ////
+
     var truncGeom = function (p, m, n) {
         if (m > n) {
             return uniformDraw(_.range(1, n + 1));
@@ -14,13 +15,16 @@
 
     var dim = 10;
     var tableSize = 100;
+    var worldWidth = 600;
+    var worldHeight = 500;
     var color = function () { return flip() ? 'red' : 'yellow' };
-    var monoColor = flip();
-    var stackHeight = function () { return truncGeom(0.5, 1, 8) };
+    var monoColor = flip(1.0);
+    var stackHeight = function () { return truncGeom(0.7, 1, 8) };
     var numStacks = truncGeom(0.5, 1, 8);
     var xpositions = _.range(worldWidth / 2 - tableSize, worldWidth / 2 + tableSize + 20, 20);
 
     //// Object definitions ////
+
     var ground = {
         shape: 'rect',
         static: true,
@@ -52,6 +56,7 @@
     }
 
     //// Make stacks ////
+
     var xposOnTable = function (options) {
         return uniformDraw(options);
     }
@@ -119,6 +124,7 @@
     }
 
     //// Make world ////
+
     var rawStacks = makeStacks([], numStacks);
     var blockList = rawStacks.flat();
     var rawStacks = filter(realStack, rawStacks);
@@ -131,4 +137,54 @@
         force: force()
     }
     return world;
+}
+
+///////////////////
+//// Semantics ////
+///////////////////
+
+var isRed = function (obj) {
+    return obj.color == 'red';
+}
+
+var isYellow = function (obj) {
+    return obj.color == 'yellow';
+}
+
+var isTall = function (stack) {
+    return stack.height >= 100;
+}
+
+var isShort = function (stack) {
+    return stack.height <= 60;
+}
+
+var isOnLeft = function (obj) {
+    return obj.x <= 270;
+}
+
+var isOnRight = function (obj) {
+    return obj.x >= 330;
+}
+
+var isOnMiddle = function (obj) {
+    return !isOnLeft(obj) && !isOnRight(obj);
+}
+
+var isOnEdge = function (obj) {
+    return obj.x == 200 || obj.x == 400;
+}
+
+var isOnCenter = function (obj) {
+    return obj.x == 300;
+}
+
+var isOnGround = function (obj) {
+    return obj.y > 400;
+}
+
+var isNear = function (obj1) {
+    return function (obj2) {
+        return Math.abs(obj1.x - obj2.x) <= 40;
+    }
 }
