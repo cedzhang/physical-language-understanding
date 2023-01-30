@@ -1,0 +1,7 @@
+Answer: 1 Definitely more red blocks
+Answer: 2 Very likely more red blocks
+Answer: 3 Somewhat likely more red blocks
+Answer: 4 Equally likely more red or more yellow
+Answer: 5 Somewhat likely more yellow blocks
+Answer: 6 Very likely more yellow blocks
+Answer: 7 Definitely more yellow blocks
