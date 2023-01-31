@@ -6,4 +6,3 @@ In this experiment, you will be reading a series of simple descriptions about a 
 5 Somewhat likely more yellow blocks
 6 Very likely more yellow blocks
 7 Definitely more yellow blocks
-Scenario: Imagine there is a table. 
