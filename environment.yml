@@ -12,5 +12,6 @@ dependencies:
   - openai
   - pandas
   - pip
+  - scipy
   - seaborn
   - tqdm
