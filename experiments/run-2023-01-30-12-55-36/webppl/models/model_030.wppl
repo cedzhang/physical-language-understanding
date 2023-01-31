@@ -229,7 +229,7 @@ var makeBlockWorld = function () {
     return likert;
   }
 
-  var dist = Infer({ method: 'forward', samples: 20}, result);
+  var dist = Infer({ method: 'forward', samples: 50}, result);
   var getData = function (key) {
     return Math.exp(dist.score(key));
   }
