@@ -37,7 +37,7 @@ parser.add_argument(
 parser.add_argument(
     "--output",
     type=str,
-    default="experiments/codex-baseline/probsem/inputs/",
+    default="codex-baseline/probsem/inputs/",
     help="Filepath to output.",
 )
 
@@ -49,7 +49,7 @@ parser.add_argument(
     help="Directory to the prompts used to run the main model experiments.",
 )
 parser.add_argument(
-    "--human_data", type=str, default="data/human-experiment/human_data_a.csv"
+    "--human_data", type=str, default="data/human-experiment/human_data.csv"
 )
 
 
@@ -141,7 +141,7 @@ def write_outputs(outputs, args, output_name=None):
     with open(os.path.join(args.output, output_name), "w") as f:
         json.dump(outputs, f)
     print(
-        "Now run: python -m probsem --prompt codex_baseline --test v1 from within the probsem directory."
+        f"Now run: python -m probsem --prompt codex_baseline --test {output_name} from within the probsem directory."
     )
 
 

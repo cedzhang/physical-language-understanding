@@ -1,1 +1,1 @@
-If the table is bumped hard enough from the right to knock at least one of the blocks onto the floor, are there going to be more red blocks or yellow blocks on the floor?
+If the table is bumped hard enough to knock at least one of the blocks onto the floor, are there going to be more red blocks or yellow blocks on the floor?
