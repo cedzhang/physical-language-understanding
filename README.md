@@ -1,4 +1,4 @@
-# Physical language understanding
+# Physics language understanding
 
 ## Setup
 1. Install NodeJS via the conda environment
