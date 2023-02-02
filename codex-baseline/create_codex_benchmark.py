@@ -45,7 +45,7 @@ parser.add_argument(
 parser.add_argument(
     "--prompts",
     type=str,
-    default="experiments/run-2023-01-30-12-55-36/codex/prompts",
+    default="experiments/run-2023-01-31-23-30/codex/prompts",
     help="Directory to the prompts used to run the main model experiments.",
 )
 parser.add_argument(

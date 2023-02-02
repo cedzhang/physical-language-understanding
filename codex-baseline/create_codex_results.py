@@ -19,7 +19,7 @@ parser.add_argument(
     nargs="+",
     type=str,
     default=[
-        "codex-baseline/probsem/outputs/codex_baseline_v1_fewshot_code-davinci-002_results.csv"
+        "codex-baseline/probsem/outputs/codex_baseline_v1_zeroshot_code-davinci-002_results.csv"
     ],
 )
 parser.add_argument(
