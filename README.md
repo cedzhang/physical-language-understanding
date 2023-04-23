@@ -1,4 +1,4 @@
-# Physics language understanding
+# Physical language understanding
 
 
 **(1) We start with a scenario in language...**
