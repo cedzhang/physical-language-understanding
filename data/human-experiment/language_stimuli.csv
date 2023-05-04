@@ -1,0 +1,65 @@
+task_id,language,number,location,quant_or_neg,vague_adj,complexity
+1,"There are four stacks of red blocks, and there is one stack of yellow blocks.",1,,,,low
+2,"There are two stacks of yellow blocks, and there is one stack of red blocks.",1,,,,low
+3,"There are two stacks of red blocks, and there are two stacks of yellow blocks.",1,,,,low
+4,"There are yellow blocks on the left side of the table, and there are red blocks on the right edge of the table.",,1,,,low
+5,"There are red blocks on the left edge of the table, and there are yellow blocks on the right edge of the table.",,1,,,low
+6,"There are yellow blocks on the edges of the table, and there are red blocks on the center of the table.",,1,,,low
+7,All of the blocks are red.,,,1,,low
+8,Most of the blocks are yellow.,,,1,,low
+9,"There are many red blocks, and there are a few yellow blocks.",,,1,,low
+10,"There are several stacks of yellow blocks, and there are few stacks of red blocks.",,,1,,low
+11,"Half of the blocks are yellow, and half of the blocks are red.",,,1,,low
+12,None of the blocks are red.,,,2,,low
+13,No less than half of the blocks are yellow.,,,2,,low
+14,"There are tall stacks of red blocks, and there are short stacks of yellow blocks.",,,,1,low
+15,"There are stacks of yellow blocks, and there are tall stacks of red blocks.",,,,1,low
+16,"There are short stacks of red blocks, and there are short stacks of yellow blocks.",,,,1,low
+17,"There are four yellow blocks on the left side of the table, and there are seven red blocks on the middle.",1,1,,,medium
+18,"There is one stack of red blocks on the right side of the table, and there is one stack of yellow blocks on the center.",1,1,,,medium
+19,"There is one stack of yellow blocks on the left side of the table, and there are two stacks of red blocks on the middle.",1,1,,,medium
+20,"There are two stacks of red blocks on the left side of the table, and there are two stacks of yellow blocks on the right side.",1,1,,,medium
+21,"There is one stack of yellow blocks, and there is one stack of red blocks near the yellow stack.",1,1,,,medium
+22,"There are three stacks of red blocks on the left side of the table, and there are two stacks of yellow blocks on the right side.",1,1,,,medium
+23,"There are three yellow blocks on the left side of the table, there are six red blocks on the middle, and there are three red blocks on the right side.",1,1,,,medium
+24,"There are more red blocks than yellow blocks on the table, and there are more yellow blocks than red blocks on the edges of the table.",,1,1,,medium
+25,There are many blocks on the table. Most of the blocks on the table are yellow. All of the blocks on the middle of the table are red.,,1,1,,medium
+26,There are more red blocks than yellow blocks on the table. All of the blocks on the edges of the table are yellow.,,1,1,,medium
+27,There are many blocks on the table. Not all of the blocks on the left side are yellow. Most of the blocks on the right side are red.,,1,2,,medium
+28,"There are red blocks on the edges of the table, and there are no yellow blocks on the egdes of the table.",,1,2,,medium
+29,"There are many yellow blocks on the left side of the table, there are no blocks on the middle, and there are no blocks on the right side.",,1,2,,medium
+30,"There are some stacks of red blocks on the middle of the table, and there are some stacks of yellow blocks on the right side. There are no blocks on the left side.",,1,2,,medium
+31,"There are several stacks of red blocks on the table, and there are at most two stacks of yellow blocks on the table.",1,,1,,medium
+32,"There are at least seven red blocks on the table, and there are many yellow blocks on the table.",1,,1,,medium
+33,"There are at most six yellow blocks on the table, and there are no more than four red blocks on the table.",1,,2,,medium
+34,"There are eight red blocks on the table, and there are no yellow blocks on the table.",1,,2,,medium
+35,"There are two tall stacks of yellow blocks, and there are two short stacks of red blocks.",1,,,1,medium
+36,"There is one tall stack of red blocks, and there are two short stacks of yellow blocks.",1,,,1,medium
+37,"There are two tall stacks of yellow blocks, and there are three short stacks of red blocks.",1,,,1,medium
+38,"There are stacks of yellow blocks, and there are stacks of red blocks. All of the yellow stacks are tall, and all of the red stacks are short.",,,1,1,medium
+39,"There are stacks of red blocks, and there are stacks of yellow blocks. All of the red stacks are tall, and some of the yellow stacks are tall.",,,1,1,medium
+40,"There are some short stacks of yellow blocks, and there are some tall stacks of red blocks.",,,1,1,medium
+41,"There are many red blocks on the left side of the table, and there is at most one stack of yellow blocks on the right side.",1,1,1,,high
+42,"There is one stack of yellow blocks on the left side of the table, and there are some red blocks on the middle.",1,1,1,,high
+43,"There are many red blocks on the left side of the table, and there are two stacks of yellow blocks on the left side.",1,1,1,,high
+44,"There are three yellow blocks on the right side of the table, and there are many red blocks on the right side.",1,1,1,,high
+45,"There are four red blocks on the left side of the table, and there are no less than five yellow blocks on the right side.",1,1,2,,high
+46,"There are eight red blocks on the middle of the table, and no more than half of the blocks on the edges of the table are yellow.",1,1,2,,high
+47,"There is one stack of yellow blocks on the middle of the table, and there are two short stacks of red blocks near the yellow stack.",1,1,,1,high
+48,"There is one stack of red blocks on the left edge of the table, and there are two tall stacks of yellow blocks near the red stack.",1,1,,1,high
+49,"There is one stack of yellow blocks on the center of the table, and there is one tall stack of red blocks near the yellow stack.",1,1,,1,high
+50,"There is one tall stack of red blocks on the right edge of the table, and there are two yellow blocks on the middle of the table.",1,1,,1,high
+51,There are less stacks of yellow blocks than stacks of red blocks on the table. All of the yellow stacks are short. ,,1,1,1,high
+52,"There are several stacks of red blocks on the table, and there are a few blocks on the edges of the table. Less than half of the blocks on the edges are yellow.",,1,1,1,high
+53,There are more stacks of yellow blocks than stacks of red blocks on the table. None of the yellow stacks are tall. Most of the red stacks are tall.,,1,2,1,high
+54,"There are several stacks of red blocks on the table, and none of the red stacks are tall. There are a few yellow blocks, and all of the yellow blocks are on the egdes of the table.",,1,2,1,high
+55,"There are two tall stacks of yellow blocks, and there are several short stacks of red blocks.",1,,1,1,high
+56,"There are a few tall stacks of red blocks, and there are four stacks of yellow blocks.",1,,1,1,high
+57,"There are many stacks of blocks on the table. There are no tall yellow stacks, and there are less than four tall red stacks.",1,,2,1,high
+58,"There are three stacks of red blocks, and there are two stacks of yellow blocks. There are no tall red stacks, and there are no short yellow stacks.",1,,2,1,high
+59,"There is one tall stack of yellow blocks on the middle of the table, and there are some red blocks near the yellow stack.",1,1,1,1,high
+60,"There is at least one tall stack of red blocks on the middle of the table, and there are two stacks of yellow blocks on the right side. There are no blocks on the left side.",1,1,1,1,high
+61,"There are at least two tall stacks of yellow blocks on the left side of the table, and there is at most one tall stack of red blocks on the right side.",1,1,1,1,high
+62,"There is one tall stack of yellow blocks on the left edge of the table, and there are no red blocks on the right edge.",1,1,2,1,high
+63,"There are two stacks of blocks on the left side of the table, and there are three stacks of blocks on the right side. All of the stacks on the left side are yellow, and not all of the stacks on the right side are red.",1,1,2,1,high
+64,"There are at least five stacks of blocks on the table. No more than half of the stacks are tall. Most of the stacks are red, and most of the stacks are on the right side.",1,1,2,1,high
